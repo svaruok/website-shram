@@ -90,7 +90,7 @@ export default function Hero() {
               <div className="relative z-10 w-64 h-[520px] bg-gray-900 rounded-[44px] shadow-2xl border-4 border-gray-800 overflow-hidden mx-auto">
                 {/* Status bar */}
                 <div className="h-8 bg-gray-900 flex items-center justify-between px-6">
-                  <span className="text-white text-[10px] font-medium">9:41</span>
+                  <span className="text-white text-[10px] font-medium">8:23</span>
                   <div className="w-24 h-5 bg-gray-800 rounded-full" />
                   <div className="flex gap-1">
                     <div className="w-3 h-2 bg-white/80 rounded-sm" />

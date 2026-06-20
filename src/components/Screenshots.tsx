@@ -17,7 +17,7 @@ function MockScreen({ label, color, icon, lines }: { label: string; color: strin
       >
         {/* Status bar */}
         <div className="h-5 flex items-center justify-between px-4" style={{ background: '#0f0f0f' }}>
-          <span className="text-white/70 text-[8px]">9:41</span>
+          <span className="text-white/70 text-[8px]">8:23</span>
           <div className="w-12 h-3 bg-gray-800 rounded-full" />
           <div className="flex gap-0.5">
             <div className="w-2 h-1.5 bg-white/70 rounded-sm" />

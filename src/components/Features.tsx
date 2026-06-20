@@ -52,7 +52,7 @@ const features = [
   {
     icon: MessageSquare,
     title: 'Reliable Communication',
-    desc: 'Built-in messaging keeps conversations structured and professional.',
+    desc: 'Accepted on call keeps conversations structured and professional.',
   },
   {
     icon: Smartphone,
