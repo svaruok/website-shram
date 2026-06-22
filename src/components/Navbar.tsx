@@ -44,7 +44,7 @@ export default function Navbar() {
             className="flex items-center gap-2 group"
           >
             <div className="w-8 h-8 bg-burgundy rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-              <span className="text-white font-bold text-sm leading-none">S</span>
+              <span className="text-white font-bold text-sm leading-none"><img src="/Shramico_logo.jpeg" alt="Shramico-logo" className='rounded-lg' /></span>
             </div>
             <span className={`font-bold text-xl tracking-tight transition-colors ${scrolled ? 'text-gray-900' : 'text-gray-900'}`}>
               Shramico

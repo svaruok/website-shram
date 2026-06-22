@@ -28,7 +28,7 @@ export default function Footer() {
           <div className="col-span-2">
             <div className="flex items-center gap-2.5 mb-5">
               <div className="w-8 h-8 bg-burgundy rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">S</span>
+                <span className="text-white font-bold text-sm"><img src="/Shramico_logo.jpeg" alt="shramico-logo" className='rounded-lg' /></span>
               </div>
               <span className="font-bold text-xl text-white">Shramico</span>
             </div>

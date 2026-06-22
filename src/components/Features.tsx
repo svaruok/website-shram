@@ -1,6 +1,7 @@
 import {
   Shield, Zap, MapPin, Sparkles, Bell, Navigation,
-  LayoutDashboard, User, ClipboardList, MessageSquare, Smartphone, Star
+  LayoutDashboard, User, ClipboardList, MessageSquare, Smartphone, Star,
+  Calendar
 } from 'lucide-react';
 
 const features = [
@@ -13,6 +14,11 @@ const features = [
     icon: Zap,
     title: 'Quick Job Posting',
     desc: 'Employers post jobs in minutes with an intuitive, step-by-step workflow.',
+  },
+  {
+    icon: Calendar,
+    title: 'Schedule Booking',
+    desc: 'Book workers in advance for future dates by specifying shift times and worker counts.',
   },
   {
     icon: MapPin,

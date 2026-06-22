@@ -1,4 +1,3 @@
-import { Download } from 'lucide-react';
 
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.shramico.app';
 

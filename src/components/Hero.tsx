@@ -1,4 +1,4 @@
-import { Download, ArrowRight, Shield, Zap, MapPin } from 'lucide-react';
+import { Download, ArrowRight, Shield, Zap, MapPin, ArrowLeft, Users } from 'lucide-react';
 
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.shramico.app';
 
@@ -87,9 +87,9 @@ export default function Hero() {
               <div className="absolute -bottom-8 -right-8 w-48 h-48 rounded-full border border-burgundy/8" />
 
               {/* Main phone mockup */}
-              <div className="relative z-10 w-64 h-[520px] bg-gray-900 rounded-[44px] shadow-2xl border-4 border-gray-800 overflow-hidden mx-auto">
+              <div className="relative z-10 w-64 h-[520px] bg-gray-900 rounded-[44px] shadow-2xl border-4 border-gray-800 overflow-hidden mx-auto flex flex-col">
                 {/* Status bar */}
-                <div className="h-8 bg-gray-900 flex items-center justify-between px-6">
+                <div className="h-8 bg-gray-900 flex items-center justify-between px-6 flex-shrink-0">
                   <span className="text-white text-[10px] font-medium">8:23</span>
                   <div className="w-24 h-5 bg-gray-800 rounded-full" />
                   <div className="flex gap-1">
@@ -98,48 +98,87 @@ export default function Hero() {
                   </div>
                 </div>
                 {/* App screen */}
-                <div className="bg-gradient-to-b from-[#800020] to-[#5C0014] h-full flex flex-col">
+                <div className="bg-[#FAF9F6] h-[488px] flex flex-col font-sans relative overflow-hidden select-none">
                   {/* Header */}
-                  <div className="px-5 pt-6 pb-4">
-                    <div className="flex items-center gap-2 mb-4">
-                      <div className="w-7 h-7 bg-white/20 rounded-lg flex items-center justify-center">
-                        <span className="text-white text-xs font-bold">S</span>
-                      </div>
-                      <span className="text-white font-bold text-sm">Shramico</span>
+                  <div className="px-4 pt-3 pb-2 flex items-center border-b border-gray-100 bg-white">
+                    <div className="bg-pink-50/70 p-1.5 rounded-full w-7 h-7 flex items-center justify-center text-burgundy cursor-pointer hover:bg-pink-100/50 transition-colors">
+                      <ArrowLeft size={14} className="text-burgundy stroke-[3px]" />
                     </div>
-                    <p className="text-white/70 text-xs">Good morning,</p>
-                    <p className="text-white font-semibold text-base">Find work near you</p>
+                    <span className="text-sm font-bold text-gray-900 tracking-tight ml-2">Shramico</span>
                   </div>
-                  {/* Search bar */}
-                  <div className="px-5 mb-4">
-                    <div className="bg-white/15 rounded-xl px-4 py-2.5 flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full border border-white/60" />
-                      <span className="text-white/60 text-xs">Search jobs...</span>
+
+                  {/* Subtitle */}
+                  <p className="text-[9px] text-gray-500 font-semibold px-4 pt-2 leading-relaxed">
+                    Select worker(s) to continue.
+                  </p>
+
+                  {/* Selected worker badge */}
+                  <div className="border border-pink-100 bg-white rounded-2xl p-2.5 mx-4 mt-2 flex items-center gap-2.5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
+                    <div className="bg-red-50 text-burgundy p-1.5 rounded-lg flex items-center justify-center">
+                      <Users size={12} className="text-burgundy" />
                     </div>
+                    <span className="text-[9.5px] font-bold text-gray-900">1 worker selected</span>
                   </div>
-                  {/* Cards */}
-                  <div className="flex-1 bg-white rounded-t-3xl px-4 pt-5 space-y-3 overflow-hidden">
-                    {['Electrician', 'Plumber', 'Carpenter'].map((job, i) => (
-                      <div key={job} className="bg-gray-50 rounded-xl p-3 flex items-center gap-3 border border-gray-100">
-                        <div
-                          className="w-9 h-9 rounded-lg flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
-                          style={{ background: i === 0 ? '#800020' : i === 1 ? '#A63A50' : '#5C0014' }}
-                        >
-                          {job[0]}
-                        </div>
-                        <div>
-                          <p className="text-gray-800 text-xs font-semibold">{job}</p>
-                          <p className="text-gray-400 text-[10px]">2.4 km away · Full-time</p>
-                        </div>
-                        <div className="ml-auto w-5 h-5 rounded-full bg-burgundy/10 flex items-center justify-center">
-                          <div className="w-1.5 h-1.5 rounded-full bg-burgundy" />
+
+                  {/* Category Grid (scrollable) */}
+                  <div className="flex-1 overflow-y-auto px-4 pt-3 pb-4 space-y-3 scrollbar-hide">
+                    <div className="grid grid-cols-2 gap-3">
+                      
+                      {/* Mason - Selected */}
+                      <div className="border-2 border-burgundy rounded-[24px] p-2 bg-[#FDF2F4]/30 flex flex-col items-center justify-between text-center shadow-sm">
+                        <img src="/Categories/Mason.png" alt="Mason" className="w-16 h-16 object-contain rounded-t-xl mt-1" />
+                        <h5 className="text-[9.5px] font-extrabold text-gray-900 mt-1">Mason</h5>
+                        <div className="bg-burgundy text-white rounded-full py-1 px-2.5 flex items-center justify-between w-full text-[8.5px] font-bold mt-2 shadow-sm">
+                          <span>-</span>
+                          <span>1</span>
+                          <span>+</span>
                         </div>
                       </div>
-                    ))}
-                    <div className="text-center pt-1">
-                      <div className="inline-block px-4 py-1.5 bg-burgundy/10 rounded-full text-[10px] font-semibold text-burgundy">
-                        View All Jobs
+
+                      {/* Construction Helper */}
+                      <div className="border border-gray-150 rounded-[24px] p-2 bg-white flex flex-col items-center justify-between text-center shadow-sm hover:border-burgundy/30 transition-colors">
+                        <img src="/Categories/Construction_helper.png" alt="Construction Helper" className="w-16 h-16 object-contain rounded-t-xl mt-1" />
+                        <h5 className="text-[8.5px] font-bold text-gray-855 mt-1 leading-tight">Construction Helper</h5>
+                        <div className="bg-pink-50/40 text-burgundy border border-pink-100 rounded-full py-1 px-2.5 flex items-center justify-between w-full text-[8.5px] font-bold mt-2">
+                          <span className="text-gray-300">-</span>
+                          <span>Add</span>
+                          <span className="text-burgundy">+</span>
+                        </div>
                       </div>
+
+                      {/* General */}
+                      <div className="border border-gray-150 rounded-[24px] p-2 bg-white flex flex-col items-center justify-between text-center shadow-sm hover:border-burgundy/30 transition-colors">
+                        <img src="/Categories/General.png" alt="General" className="w-16 h-16 object-contain rounded-t-xl mt-1" />
+                        <h5 className="text-[8.5px] font-bold text-gray-855 mt-1">General</h5>
+                        <div className="bg-pink-50/40 text-burgundy border border-pink-100 rounded-full py-1 px-2.5 flex items-center justify-between w-full text-[8.5px] font-bold mt-2">
+                          <span className="text-gray-300">-</span>
+                          <span>Add</span>
+                          <span className="text-burgundy">+</span>
+                        </div>
+                      </div>
+
+                      {/* Packers & Movers */}
+                      <div className="border border-gray-150 rounded-[24px] p-2 bg-white flex flex-col items-center justify-between text-center shadow-sm hover:border-burgundy/30 transition-colors">
+                        <img src="/Categories/Packers_and_Movers.png" alt="Packers and Movers" className="w-16 h-16 object-contain rounded-t-xl mt-1" />
+                        <h5 className="text-[8.5px] font-bold text-gray-855 mt-1 leading-tight">Packers and Movers</h5>
+                        <div className="bg-pink-50/40 text-burgundy border border-pink-100 rounded-full py-1 px-2.5 flex items-center justify-between w-full text-[8.5px] font-bold mt-2">
+                          <span className="text-gray-300">-</span>
+                          <span>Add</span>
+                          <span className="text-burgundy">+</span>
+                        </div>
+                      </div>
+
+                      {/* Helper */}
+                      <div className="border border-gray-150 rounded-[24px] p-2 bg-white flex flex-col items-center justify-between text-center shadow-sm hover:border-burgundy/30 transition-colors">
+                        <img src="/Categories/Helper.png" alt="Helper" className="w-16 h-16 object-contain rounded-t-xl mt-1" />
+                        <h5 className="text-[8.5px] font-bold text-gray-855 mt-1">Helper</h5>
+                        <div className="bg-pink-50/40 text-burgundy border border-pink-100 rounded-full py-1 px-2.5 flex items-center justify-between w-full text-[8.5px] font-bold mt-2">
+                          <span className="text-gray-300">-</span>
+                          <span>Add</span>
+                          <span className="text-burgundy">+</span>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
                 </div>
