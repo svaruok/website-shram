@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Download } from 'lucide-react';
+import { handleDownload, getAppLink } from '../utils/download';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -9,8 +10,6 @@ const navLinks = [
   { label: 'FAQ', href: '#faq' },
   { label: 'Contact', href: '#contact' },
 ];
-
-const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.shramico.app';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -68,9 +67,10 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href={PLAY_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={getAppLink() || '#'}
+              onClick={handleDownload}
+              target={getAppLink() ? "_blank" : undefined}
+              rel={getAppLink() ? "noopener noreferrer" : undefined}
               className="btn-primary text-sm"
             >
               <Download size={15} />
@@ -109,9 +109,10 @@ export default function Navbar() {
             ))}
             <div className="pt-3 border-t border-gray-100 mt-2">
               <a
-                href={PLAY_STORE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={getAppLink() || '#'}
+                onClick={handleDownload}
+                target={getAppLink() ? "_blank" : undefined}
+                rel={getAppLink() ? "noopener noreferrer" : undefined}
                 className="btn-primary w-full justify-center text-sm"
               >
                 <Download size={15} />

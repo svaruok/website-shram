@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Download } from 'lucide-react';
+import { handleDownload, getAppLink } from '../utils/download';
 
-const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.shramico.app';
 
 const productLinks = [
   { label: 'Features', href: '#features' },
@@ -37,9 +37,10 @@ export default function Footer() {
               Connecting employers and skilled workers through a seamless mobile experience.
             </p>
             <a
-              href={PLAY_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={getAppLink() || '#'}
+              onClick={handleDownload}
+              target={getAppLink() ? "_blank" : undefined}
+              rel={getAppLink() ? "noopener noreferrer" : undefined}
               className="inline-flex items-center gap-2 bg-white/10 hover:bg-burgundy border border-white/20 text-white text-sm font-semibold px-5 py-3 rounded-xl transition-all duration-200"
             >
               <Download size={15} />
@@ -64,9 +65,10 @@ export default function Footer() {
               ))}
               <li>
                 <a
-                  href={PLAY_STORE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={getAppLink() || '#'}
+                  onClick={handleDownload}
+                  target={getAppLink() ? "_blank" : undefined}
+                  rel={getAppLink() ? "noopener noreferrer" : undefined}
                   className="text-white/60 text-sm hover:text-white transition-colors"
                 >
                   Download App

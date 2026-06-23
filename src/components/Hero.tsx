@@ -1,6 +1,5 @@
 import { Download, ArrowRight, Shield, Zap, MapPin, ArrowLeft, Users } from 'lucide-react';
-
-const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.shramico.app';
+import { handleDownload, getAppLink } from '../utils/download';
 
 const badges = [
   { icon: Shield, text: 'OTP Verified' },
@@ -44,9 +43,10 @@ export default function Hero() {
 
             <div className="flex flex-wrap gap-4 mb-12">
               <a
-                href={PLAY_STORE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={getAppLink() || '#'}
+                onClick={handleDownload}
+                target={getAppLink() ? "_blank" : undefined}
+                rel={getAppLink() ? "noopener noreferrer" : undefined}
                 className="btn-primary text-base px-8 py-4"
               >
                 <Download size={18} />

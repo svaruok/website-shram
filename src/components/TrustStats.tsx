@@ -1,8 +1,8 @@
 import { Users, Briefcase, Zap, Shield, Bell, MapPin } from 'lucide-react';
 
 const stats = [
-  { icon: Users, value: '10,000+', label: 'Verified Users', desc: 'OTP-authenticated accounts' },
-  { icon: Briefcase, value: '5,000+', label: 'Jobs Posted', desc: 'Across multiple categories' },
+  { icon: Users, value: '100+', label: 'Trusted Users', desc: 'OTP-authenticated accounts' },
+  { icon: Briefcase, value: '500+', label: 'Jobs Posted', desc: 'Across multiple categories' },
   { icon: Zap, value: 'Fast', label: 'Hiring Experience', desc: 'Connect in minutes' },
   { icon: Shield, value: 'Secure', label: 'OTP Authentication', desc: 'Safe login every time' },
   { icon: Bell, value: 'Live', label: 'Real-Time Updates', desc: 'Instant notifications' },

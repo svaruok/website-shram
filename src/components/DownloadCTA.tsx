@@ -1,5 +1,4 @@
-
-const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.shramico.app';
+import { handleDownload, getAppLink } from '../utils/download';
 
 export default function DownloadCTA() {
   return (
@@ -23,9 +22,10 @@ export default function DownloadCTA() {
 
         <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
           <a
-            href={PLAY_STORE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={getAppLink() || '#'}
+            onClick={handleDownload}
+            target={getAppLink() ? "_blank" : undefined}
+            rel={getAppLink() ? "noopener noreferrer" : undefined}
             className="inline-flex items-center gap-3 bg-white text-[#800020] font-bold px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-200"
           >
             {/* Google Play icon */}
