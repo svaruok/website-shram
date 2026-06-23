@@ -57,20 +57,29 @@ export default function Contact() {
   };
 
   const inputClass =
-    "w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-800 placeholder-gray-400 bg-white focus:outline-none focus:ring-2 focus:ring-burgundy/40 focus:border-burgundy/60 transition-all duration-200";
+    "w-full px-5 py-4 rounded-xl border border-white/10 text-sm text-white placeholder-white/30 bg-white/5 focus:outline-none focus:ring-2 focus:ring-[#e8a060]/40 focus:border-[#e8a060]/60 transition-all duration-300 backdrop-blur-md";
 
   return (
-    <section id="contact" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="section-label mb-4">Contact & Support</div>
+    <section id="contact" className="py-32 bg-[#0a050e] relative overflow-hidden border-t border-white/5">
+      {/* Background glow effects */}
+      <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-burgundy/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-[#e8a060]/5 rounded-full blur-[120px] pointer-events-none" />
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-            We're here to help
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/70 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
+            Contact & Support
+          </div>
+
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+            We're here to{' '}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-burgundy to-[#e8a060]">
+              help
+            </span>
           </h2>
 
-          <p className="mt-3 text-gray-500 max-w-xl mx-auto">
+          <p className="mt-6 text-white/50 max-w-xl mx-auto text-lg">
             Have a question, feedback, or partnership enquiry? Reach out and
             our team will get back to you promptly.
           </p>
@@ -97,42 +106,42 @@ export default function Contact() {
             ].map(({ icon: Icon, label, value, sub, href }) => (
               <div
                 key={label}
-                className="flex gap-4 p-5 bg-[#FAF9F7] rounded-2xl border border-gray-100"
+                className="group flex gap-5 p-6 bg-white/[0.02] backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/[0.04] transition-all duration-500"
               >
-                <div className="w-10 h-10 bg-burgundy/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Icon size={18} className="text-burgundy" />
+                <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-burgundy/20 group-hover:border-burgundy/50 transition-all duration-300">
+                  <Icon size={20} className="text-[#e8a060] group-hover:text-white" />
                 </div>
 
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
+                  <p className="text-xs font-bold uppercase tracking-widest text-white/40 mb-1">
                     {label}
                   </p>
 
                   {href ? (
                     <a
                       href={href}
-                      className="font-semibold text-gray-900 text-sm hover:text-burgundy transition-colors"
+                      className="font-bold text-white text-base hover:text-[#e8a060] transition-colors"
                     >
                       {value}
                     </a>
                   ) : (
-                    <p className="font-semibold text-gray-900 text-sm">
+                    <p className="font-bold text-white text-base">
                       {value}
                     </p>
                   )}
 
-                  <p className="text-gray-400 text-xs mt-1">{sub}</p>
+                  <p className="text-white/40 text-xs mt-1.5 leading-relaxed">{sub}</p>
                 </div>
               </div>
             ))}
 
             {/* Social */}
-            <div className="p-5 bg-[#FAF9F7] rounded-2xl border border-gray-100">
-              <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
+            <div className="p-6 bg-white/[0.02] backdrop-blur-xl rounded-3xl border border-white/10">
+              <p className="text-xs font-bold uppercase tracking-widest text-white/40 mb-4">
                 Follow Us
               </p>
 
-              <div className="flex gap-3">
+              <div className="flex gap-4">
                 {[
                   {
                     icon: Twitter,
@@ -156,9 +165,9 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     title={label}
-                    className="w-9 h-9 bg-white border border-gray-200 rounded-lg flex items-center justify-center hover:bg-burgundy hover:border-burgundy hover:text-white text-gray-400 transition-all duration-200"
+                    className="w-12 h-12 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-[#e8a060] hover:border-[#e8a060] hover:text-white text-white/60 transition-all duration-300 shadow-lg hover:-translate-y-1"
                   >
-                    <Icon size={16} />
+                    <Icon size={20} />
                   </a>
                 ))}
               </div>
@@ -166,28 +175,30 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="lg:col-span-3 bg-[#FAF9F7] rounded-3xl border border-gray-100 p-8 shadow-sm">
-            <h3 className="font-bold text-gray-900 text-lg mb-6">
+          <div className="lg:col-span-3 bg-white/[0.02] backdrop-blur-xl rounded-[2rem] border border-white/10 p-8 sm:p-10 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#e8a060]/10 rounded-full blur-[80px] pointer-events-none" />
+            
+            <h3 className="font-extrabold text-white text-2xl mb-8 tracking-tight relative z-10">
               Send a message
             </h3>
 
             {sent ? (
-              <div className="flex flex-col items-center justify-center py-12 text-center">
-                <div className="w-14 h-14 bg-green-50 rounded-full flex items-center justify-center mb-4">
-                  <Send size={22} className="text-green-500" />
+              <div className="flex flex-col items-center justify-center py-16 text-center relative z-10">
+                <div className="w-16 h-16 bg-[#e8a060]/20 border border-[#e8a060]/30 rounded-full flex items-center justify-center mb-6 shadow-lg shadow-[#e8a060]/20">
+                  <Send size={24} className="text-[#e8a060]" />
                 </div>
 
-                <h4 className="font-bold text-gray-900 mb-1">
+                <h4 className="font-bold text-white text-xl mb-2">
                   Message received!
                 </h4>
 
-                <p className="text-gray-500 text-sm">
+                <p className="text-white/50 text-sm">
                   We'll get back to you within one business day.
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid sm:grid-cols-2 gap-4">
+              <form onSubmit={handleSubmit} className="space-y-5 relative z-10">
+                <div className="grid sm:grid-cols-2 gap-5">
                   <input
                     type="text"
                     placeholder="Your name"
@@ -223,7 +234,7 @@ export default function Contact() {
                 />
 
                 <textarea
-                  rows={5}
+                  rows={6}
                   placeholder="How can we help you?"
                   value={form.message}
                   required
@@ -236,9 +247,9 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn-primary w-full justify-center py-3.5 disabled:opacity-60 disabled:cursor-not-allowed flex items-center gap-2"
+                  className="w-full bg-gradient-to-r from-burgundy to-[#a01030] hover:from-[#a01030] hover:to-[#c02040] text-white font-bold rounded-xl py-4 flex items-center justify-center gap-2 shadow-lg shadow-burgundy/30 transition-all duration-300 hover:shadow-burgundy/50 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  <Send size={16} />
+                  <Send size={18} />
                   {loading ? "Sending..." : "Send Message"}
                 </button>
               </form>

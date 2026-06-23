@@ -25,7 +25,7 @@ export default function Hero() {
           {/* Left content */}
           <div className="max-w-xl">
             <div className="section-label mb-6">
-              Quick Hire Platform
+              Smart Hiring Platform
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight tracking-tight mb-6">

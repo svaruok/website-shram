@@ -4,7 +4,6 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
     font-family: 'Inter', sans-serif;
   }
   body {
@@ -36,3 +35,39 @@
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #F5F5F5; }
 ::-webkit-scrollbar-thumb { background: #800020; border-radius: 3px; }
+
+
+/* Performance fixes for low-end laptops */
+.backdrop-blur-xl, .backdrop-blur-md {
+  backdrop-filter: none !important;
+}
+
+@keyframes screenFall {
+  0% {
+    transform: translateY(0) rotateZ(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(120%) rotateZ(15deg) scale(0.9);
+    opacity: 0;
+  }
+}
+
+@keyframes screenDropIn {
+  0% {
+    transform: translateY(-80px) scale(0.85);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-screen-fall {
+  animation: screenFall 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+}
+
+.animate-screen-drop {
+  animation: screenDropIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}

@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import {
   Bell, Star, Check, RefreshCw, Briefcase, MapPin, Clock, Moon,
   User, Phone, Navigation, X, Play, Calendar, Home,
-  ChevronRight, Compass, Info
+  ChevronRight, ChevronLeft, Compass, Info
 } from 'lucide-react';
 
 function ScreenHome() {
@@ -947,27 +948,26 @@ const screens = [
 
 ];
 
-function MockScreen({ label, render }: { label: string; render: () => React.ReactNode }) {
+function MockScreen({ label, render, animClass }: { label: string; render: () => React.ReactNode; animClass: string }) {
   return (
-    <div className="flex flex-col items-center gap-3 group">
+    <div className="flex flex-col items-center gap-4">
       {/* Phone frame */}
       <div
-        className="relative w-56 h-[390px] rounded-[32px] overflow-hidden shadow-xl border-4 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-2xl flex flex-col"
-        style={{ borderColor: '#18181b', background: '#0f0f0f' }}
+        className={`relative w-64 h-[440px] rounded-[36px] overflow-hidden shadow-2xl border-[6px] border-[#18181b] bg-[#0f0f0f] flex flex-col ${animClass}`}
       >
         {/* Status bar */}
-        <div className="h-6 flex items-center justify-between px-3 select-none flex-shrink-0" style={{ background: '#0f0f0f' }}>
-          <span className="text-white text-[9px] font-bold">8:23</span>
+        <div className="h-7 flex items-center justify-between px-4 select-none flex-shrink-0 z-50 bg-[#0f0f0f]">
+          <span className="text-white text-[10px] font-bold">8:23</span>
           {/* Notch / Dynamic Island */}
-          <div className="w-14 h-3.5 bg-black rounded-full" />
+          <div className="w-16 h-4 bg-black rounded-full" />
           {/* Icons */}
-          <div className="flex items-center gap-1">
-            <div className="flex items-end gap-[1px] h-2">
-              <div className="w-[1.5px] h-1 bg-white rounded-[0.5px]" />
+          <div className="flex items-center gap-1.5">
+            <div className="flex items-end gap-[1px] h-2.5">
               <div className="w-[1.5px] h-1.5 bg-white rounded-[0.5px]" />
               <div className="w-[1.5px] h-2 bg-white rounded-[0.5px]" />
+              <div className="w-[1.5px] h-2.5 bg-white rounded-[0.5px]" />
             </div>
-            <svg className="w-2.5 h-2.5 text-white" viewBox="0 0 24 24" fill="currentColor">
+            <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 21a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm-7.07-7.07a10 10 0 0 1 14.14 0l-1.42 1.42a8 8 0 0 0-11.3 0l-1.42-1.42zm-2.83-2.83a14 14 0 0 1 19.8 0l-1.42 1.42a12 12 0 0 0-16.96 0L2.1 11.1z" />
             </svg>
             <div className="w-5 h-2.5 rounded-[3px] border border-white/70 p-[1px] flex items-center">
@@ -982,31 +982,131 @@ function MockScreen({ label, render }: { label: string; render: () => React.Reac
           {render()}
         </div>
       </div>
-      <span className="text-xs font-semibold text-gray-600">{label}</span>
+      
+      {/* Current Screen Label */}
+      <div className="bg-white/80 backdrop-blur-sm border border-gray-200 px-4 py-2 rounded-full shadow-sm">
+        <span className="text-sm font-bold text-burgundy">{label}</span>
+      </div>
     </div>
   );
 }
 
 export default function Screenshots() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFalling, setIsFalling] = useState(false);
+
+  const nextScreen = () => {
+    if (isFalling) return;
+    setIsFalling(true);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev + 1) % screens.length);
+      setIsFalling(false);
+    }, 500); // Wait for the falling animation to finish
+  };
+
+  const prevScreen = () => {
+    if (isFalling) return;
+    setIsFalling(true);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev - 1 + screens.length) % screens.length);
+      setIsFalling(false);
+    }, 500);
+  };
+
   return (
-    <section className="py-24 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+    <section className="py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden relative">
+      {/* Massive Ambient Glows for Background Depth */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[600px] h-[600px] bg-burgundy/5 rounded-full blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none z-0" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-12">
           <div className="section-label mb-4">App Preview</div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
             A beautifully crafted{' '}
             <span className="text-burgundy">mobile experience</span>
           </h2>
           <p className="mt-4 text-gray-500 max-w-xl mx-auto">
-            Every screen is designed with clarity and ease of use in mind, delivering a
-            professional experience from the first tap.
+            Interactive, intuitive, and designed to get work done instantly. Tap the arrows to explore the platform.
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
-          {screens.map((s) => (
-            <MockScreen key={s.label} {...s} />
-          ))}
+        <div className="flex flex-col items-center justify-center w-full">
+          {/* Controls & Phone Frame Container */}
+          <div className="flex items-center justify-center gap-4 sm:gap-8 relative w-full max-w-[1000px]">
+            {/* Left Button */}
+            <button 
+              onClick={prevScreen}
+              disabled={isFalling}
+              className="absolute sm:static left-2 z-30 bg-white/90 backdrop-blur-md border border-gray-200 p-3 sm:p-4 rounded-full shadow-xl hover:shadow-2xl hover:-translate-x-1 hover:border-burgundy/30 transition-all text-gray-700 hover:text-burgundy disabled:opacity-50 disabled:pointer-events-none"
+            >
+              <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7" />
+            </button>
+
+            {/* Carousel Container (Coverflow effect) */}
+            <div className="relative flex justify-center items-center perspective-[1200px] w-full max-w-[280px] sm:max-w-[700px] h-[520px]">
+              
+              {/* Left/Prev Phone (Desktop only) */}
+              <div className="hidden sm:block absolute left-0 top-1/2 -translate-y-1/2 scale-[0.7] opacity-30 blur-[2px] pointer-events-none z-0 transition-all duration-500 origin-left">
+                <MockScreen 
+                  label={screens[(currentIndex - 1 + screens.length) % screens.length].label} 
+                  render={screens[(currentIndex - 1 + screens.length) % screens.length].render} 
+                  animClass="" 
+                />
+              </div>
+
+              {/* Right/Next Phone (Desktop only) */}
+              <div className="hidden sm:block absolute right-0 top-1/2 -translate-y-1/2 scale-[0.7] opacity-30 blur-[2px] pointer-events-none z-0 transition-all duration-500 origin-right">
+                <MockScreen 
+                  label={screens[(currentIndex + 1) % screens.length].label} 
+                  render={screens[(currentIndex + 1) % screens.length].render} 
+                  animClass="" 
+                />
+              </div>
+
+              {/* Main Center Phone */}
+              <div className="relative z-20 drop-shadow-2xl">
+                <MockScreen 
+                  key={currentIndex}
+                  label={screens[currentIndex].label} 
+                  render={screens[currentIndex].render} 
+                  animClass={isFalling ? 'animate-screen-fall pointer-events-none' : 'animate-screen-drop'} 
+                />
+              </div>
+
+            </div>
+
+            {/* Right Button */}
+            <button 
+              onClick={nextScreen}
+              disabled={isFalling}
+              className="absolute sm:static right-2 z-30 bg-white/90 backdrop-blur-md border border-gray-200 p-3 sm:p-4 rounded-full shadow-xl hover:shadow-2xl hover:translate-x-1 hover:border-burgundy/30 transition-all text-gray-700 hover:text-burgundy disabled:opacity-50 disabled:pointer-events-none"
+            >
+              <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7" />
+            </button>
+          </div>
+
+          {/* Dots Indicator */}
+          <div className="flex gap-2 mt-8 z-20">
+            {screens.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  if (isFalling || idx === currentIndex) return;
+                  setIsFalling(true);
+                  setTimeout(() => {
+                    setCurrentIndex(idx);
+                    setIsFalling(false);
+                  }, 500);
+                }}
+                className={`transition-all duration-300 rounded-full ${
+                  idx === currentIndex 
+                    ? 'w-8 h-2.5 bg-burgundy shadow-md shadow-burgundy/20' 
+                    : 'w-2.5 h-2.5 bg-gray-300 hover:bg-gray-400'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

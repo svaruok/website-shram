@@ -21,7 +21,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gray-900 text-white pt-16 pb-8">
+    <footer className="bg-[#0a050e] text-white pt-20 pb-10 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10 pb-12 border-b border-white/10">
           {/* Brand */}
@@ -33,7 +33,7 @@ export default function Footer() {
               <span className="font-bold text-xl text-white">Shramico</span>
             </div>
             <p className="text-white/50 text-sm leading-relaxed mb-6 max-w-xs">
-              Quick Hire. Trusted Work. Real Opportunities.<br />
+              Smart Hiring. Trusted Work. Real Opportunities.<br />
               Connecting employers and skilled workers through a seamless mobile experience.
             </p>
             <a
