@@ -93,9 +93,10 @@ function AnimatedTools({ progress }: { progress: number }) {
   );
 }
 
-// ─── Camera auto-orbit ────────────────────────────────────────────────────────
+// ─── Camera auto-orbit (Tied to Scroll!) ─────────────────────────────────────────
 function CameraRig({ isMobile }: { isMobile: boolean }) {
   const target = useMemo(() => new THREE.Vector3(0, 2, 0), []);
+  
   useFrame(({ clock, camera }) => {
     const t    = clock.getElapsedTime();
     const pull = Math.min(1, t / 4.0);
@@ -103,8 +104,17 @@ function CameraRig({ isMobile }: { isMobile: boolean }) {
     const baseR = isMobile ? 14 : 11;
     const r     = 15 + pull * baseR;
     
-    const currentY = 6 + pull * 8 + Math.sin(t * 0.2) * 1.5;
-    const angle    = Math.sin(t * 0.12) * -0.35;
+    // Add a gentle floating effect that is always playing
+    const currentY = 6 + pull * 8 + Math.sin(t * 0.5) * 0.5;
+    
+    // THE MAGIC: Tie rotation directly to scroll position!
+    // As you scroll down 1 full screen height, it rotates ~90 degrees.
+    const scrollOffset = typeof window !== 'undefined' ? window.scrollY : 0;
+    const scrollAngle = (scrollOffset / window.innerHeight) * (Math.PI / 1.5);
+    
+    // Combine initial gentle auto-pan with the aggressive scroll rotation
+    const autoPan = Math.sin(t * 0.1) * -0.2;
+    const angle = autoPan - scrollAngle;
 
     camera.position.set(
       Math.sin(angle) * r,

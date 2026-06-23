@@ -63,11 +63,11 @@ export default function CollosseumHero() {
     return () => window.removeEventListener('resize', check);
   }, []);
 
-  // Aggressively freeze the 3D rendering loop as soon as the user scrolls down to save performance
+  // Scroll-based rendering optimization: pause rendering ONLY when completely off-screen
   useEffect(() => {
     const handleScroll = () => {
-      // If scrolled more than 10% of the screen height, freeze the 3D model
-      if (window.scrollY > window.innerHeight * 0.1) {
+      // If we've scrolled past 120% of the window height, we can safely pause rendering
+      if (window.scrollY > window.innerHeight * 1.2) {
         setInView(false);
       } else {
         setInView(true);
@@ -95,7 +95,7 @@ export default function CollosseumHero() {
           <Canvas
             style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}
             camera={{ position: [0, 10, 28], fov: 52, near: 0.1, far: 300 }}
-            dpr={1}
+            dpr={[1, 1.5]}
             frameloop={inView ? "always" : "demand"} // Nuclear option: stops GPU completely when scrolling down
             gl={{ antialias: false, powerPreference: 'high-performance', localClippingEnabled: true }}
           >
