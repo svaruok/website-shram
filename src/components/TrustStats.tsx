@@ -11,32 +11,48 @@ const stats = [
 
 export default function TrustStats() {
   return (
-    <section className="py-20 bg-[#FAF9F7]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <div className="section-label mb-4">Platform Highlights</div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-            Built for trust. Designed for speed.
+    <section className="py-24 bg-white relative overflow-hidden border-t border-gray-100 z-20">
+      {/* Background glow effects */}
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
+            Platform Highlights
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+            Built for trust. <br className="sm:hidden" />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-burgundy to-gray-900">
+              Designed for speed.
+            </span>
           </h2>
-          <p className="mt-3 text-gray-500 max-w-xl mx-auto">
+          <p className="mt-6 text-gray-600 max-w-xl mx-auto text-lg font-medium">
             Shramico is engineered to make every hire and every job application fast, reliable, and secure.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
-          {stats.map(({ icon: Icon, value, label, desc }) => (
-            <div
-              key={label}
-              className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 text-center group"
-            >
-              <div className="w-11 h-11 bg-burgundy/8 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-burgundy/15 transition-colors">
-                <Icon size={20} className="text-burgundy" />
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+          {stats.map((stat, index) => {
+            const Icon = stat.icon;
+            return (
+              <div 
+                key={index} 
+                className="group flex flex-col items-center text-center p-8 bg-gray-50 border border-gray-100 rounded-[2rem] hover:bg-white hover:border-gray-200 hover:shadow-xl transition-all duration-300"
+              >
+                <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-white border border-gray-100 text-burgundy mb-6 shadow-sm group-hover:scale-110 group-hover:border-burgundy/20 transition-all duration-300">
+                  <Icon size={24} className="currentColor" />
+                </div>
+                <h3 className="text-3xl font-black text-gray-900 tracking-tight mb-2">
+                  {stat.value}
+                </h3>
+                <p className="font-bold text-gray-900 mb-1">
+                  {stat.label}
+                </p>
+                <p className="text-sm font-medium text-gray-500">
+                  {stat.desc}
+                </p>
               </div>
-              <p className="text-2xl font-extrabold text-gray-900 mb-0.5">{value}</p>
-              <p className="text-xs font-semibold text-gray-700 mb-1">{label}</p>
-              <p className="text-[11px] text-gray-400 leading-tight">{desc}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

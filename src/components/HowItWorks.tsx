@@ -18,18 +18,20 @@ const workerSteps = [
 
 function StepCard({ n, title, desc, last }: { n: string; title: string; desc: string; last: boolean }) {
   return (
-    <div className="relative flex gap-5">
-      {/* Timeline line */}
+    <div className="relative flex gap-6 group">
+      {/* Timeline line with glow effect */}
       {!last && (
-        <div className="absolute left-5 top-12 bottom-0 w-px bg-gradient-to-b from-burgundy/30 to-transparent" />
+        <div className="absolute left-6 top-14 bottom-0 w-px bg-gradient-to-b from-gray-300 via-gray-200 to-transparent group-hover:from-burgundy/50 transition-colors duration-500" />
       )}
+      
       {/* Number badge */}
-      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-burgundy text-white font-bold text-xs flex items-center justify-center shadow-md z-10">
+      <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-white border border-gray-200 text-gray-900 font-bold text-sm flex items-center justify-center shadow-sm z-10 group-hover:bg-burgundy/10 group-hover:border-burgundy/30 group-hover:text-burgundy transition-all duration-500">
         {n}
       </div>
-      <div className="pb-8">
-        <h4 className="font-bold text-gray-900 mb-1 text-sm">{title}</h4>
-        <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+      
+      <div className="pb-10 pt-2">
+        <h4 className="font-bold text-gray-900 mb-2 text-base tracking-wide group-hover:text-burgundy transition-colors duration-300">{title}</h4>
+        <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
       </div>
     </div>
   );
@@ -37,30 +39,36 @@ function StepCard({ n, title, desc, last }: { n: string; title: string; desc: st
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-24 bg-[#FAF9F7]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="section-label mb-4">How It Works</div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
-            Simple steps to{' '}
-            <span className="text-burgundy">get started</span>
+    <section id="how-it-works" className="py-32 bg-gray-50 relative overflow-hidden border-t border-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 text-gray-600 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
+            How It Works
+          </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight">
+            Simple steps to <br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-burgundy to-gray-900">
+              get started
+            </span>
           </h2>
-          <p className="mt-4 text-gray-500 max-w-xl mx-auto">
+          <p className="mt-6 text-gray-600 max-w-xl mx-auto text-lg font-medium">
             Whether you're an employer looking to hire or a worker seeking opportunities,
             Shramico gets you there in just a few taps.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Employer */}
-          <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-8 lg:p-10">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 bg-burgundy rounded-xl flex items-center justify-center shadow-sm">
-                <span className="text-white text-xs font-bold">EM</span>
+        <div className="grid lg:grid-cols-2 gap-8 relative">
+          {/* Subtle background glow behind the cards */}
+
+          {/* Employer Timeline */}
+          <div className="bg-white rounded-[2rem] border border-gray-200 p-8 lg:p-12 hover:border-gray-300 transition-colors duration-500 shadow-sm hover:shadow-md">
+            <div className="flex items-center gap-4 mb-12">
+              <div className="w-14 h-14 bg-gray-50 border border-gray-200 rounded-2xl flex items-center justify-center shadow-sm text-burgundy">
+                <span className="text-burgundy text-sm font-bold tracking-wider">EM</span>
               </div>
               <div>
-                <p className="text-xs text-gray-400 font-medium uppercase tracking-widest">For</p>
-                <h3 className="font-extrabold text-gray-900 text-xl">Employers</h3>
+                <p className="text-xs text-gray-500 font-bold uppercase tracking-[0.2em] mb-1">For</p>
+                <h3 className="font-extrabold text-gray-900 text-2xl tracking-tight">Employers</h3>
               </div>
             </div>
             <div>
@@ -70,15 +78,15 @@ export default function HowItWorks() {
             </div>
           </div>
 
-          {/* Worker */}
-          <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-8 lg:p-10">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 bg-[#A63A50] rounded-xl flex items-center justify-center shadow-sm">
-                <span className="text-white text-xs font-bold">WK</span>
+          {/* Worker Timeline */}
+          <div className="bg-white rounded-[2rem] border border-gray-200 p-8 lg:p-12 hover:border-gray-300 transition-colors duration-500 shadow-sm hover:shadow-md">
+            <div className="flex items-center gap-4 mb-12">
+              <div className="w-14 h-14 bg-gray-50 border border-gray-200 rounded-2xl flex items-center justify-center shadow-sm text-burgundy">
+                <span className="text-burgundy text-sm font-bold tracking-wider">WK</span>
               </div>
               <div>
-                <p className="text-xs text-gray-400 font-medium uppercase tracking-widest">For</p>
-                <h3 className="font-extrabold text-gray-900 text-xl">Workers</h3>
+                <p className="text-xs text-gray-500 font-bold uppercase tracking-[0.2em] mb-1">For</p>
+                <h3 className="font-extrabold text-gray-900 text-2xl tracking-tight">Workers</h3>
               </div>
             </div>
             <div>

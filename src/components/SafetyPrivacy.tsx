@@ -4,38 +4,44 @@ const privacyPoints = [
   {
     icon: Lock,
     title: 'Secure OTP Verification',
-    desc: 'Authentication is handled through one-time passwords sent to your registered phone number, ensuring only you can access your account.',
+    desc: 'Authentication is handled through one-time passwords sent to your phone, ensuring only you access your account.',
   },
   {
     icon: Database,
-    title: 'Responsible Data Handling',
-    desc: 'We collect only the information necessary to provide our services. Your data is stored securely and is never sold to third parties.',
+    title: 'Responsible Data',
+    desc: 'We collect only necessary information. Your data is stored securely and never sold to third parties.',
   },
   {
     icon: Eye,
-    title: 'Transparent Privacy Practices',
-    desc: 'Our Privacy Policy clearly explains what data we collect, how we use it, and your rights as a user. No hidden practices.',
+    title: 'Transparent Practices',
+    desc: 'Our Privacy Policy explains what data we collect and your rights. No hidden practices.',
   },
   {
     icon: UserCheck,
-    title: 'User-Controlled Permissions',
-    desc: 'Location and notification permissions are requested only when required for core features, and you remain in full control of what you share.',
+    title: 'User-Controlled',
+    desc: 'Location permissions are requested only when required, and you remain in full control of what you share.',
   },
 ];
 
 export default function SafetyPrivacy() {
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="section-label mb-4">Safety & Privacy</div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
-            Your privacy{' '}
-            <span className="text-burgundy">matters to us</span>
+    <section className="py-32 bg-gray-50 relative overflow-hidden border-t border-gray-100">
+      {/* Background glow effects */}
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-3xl mx-auto text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 text-gray-600 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
+            Safety & Privacy
+          </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight">
+            Your privacy <br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-burgundy to-gray-900">
+              matters to us
+            </span>
           </h2>
-          <p className="mt-4 text-gray-500 text-lg">
+          <p className="mt-6 text-gray-600 text-lg max-w-2xl mx-auto font-medium">
             Shramico is committed to responsible data practices, transparent policies, and
-            giving users full control over their information.
+            giving users absolute control over their information.
           </p>
         </div>
 
@@ -43,27 +49,31 @@ export default function SafetyPrivacy() {
           {privacyPoints.map(({ icon: Icon, title, desc }) => (
             <div
               key={title}
-              className="bg-[#FAF9F7] rounded-2xl border border-gray-100 p-7 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+              className="group relative bg-white rounded-[2rem] border border-gray-200 p-8 hover:border-gray-300 transition-all duration-500 overflow-hidden shadow-sm hover:shadow-md"
             >
-              <div className="w-12 h-12 bg-burgundy rounded-2xl flex items-center justify-center mb-5 shadow-sm">
-                <Icon size={22} className="text-white" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-br from-gray-50 to-transparent pointer-events-none" />
+              
+              <div className="relative z-10">
+                <div className="w-14 h-14 bg-gray-50 rounded-2xl border border-gray-100 flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 group-hover:border-burgundy/20 transition-transform duration-500 text-burgundy">
+                  <Icon size={24} className="currentColor" />
+                </div>
+                <h3 className="font-bold text-gray-900 text-xl mb-3 tracking-tight">{title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">{title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
 
         {/* Note */}
-        <div className="mt-10 bg-[#FAF9F7] border border-gray-200 rounded-2xl px-8 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          <div className="w-8 h-8 bg-burgundy/10 rounded-lg flex items-center justify-center flex-shrink-0">
-            <Lock size={15} className="text-burgundy" />
+        <div className="mt-12 bg-white border border-gray-200 shadow-sm rounded-3xl p-8 flex flex-col sm:flex-row items-start sm:items-center gap-6">
+          <div className="w-12 h-12 bg-burgundy/5 border border-burgundy/10 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm">
+            <Lock size={20} className="text-burgundy" />
           </div>
-          <p className="text-sm text-gray-500">
-            <strong className="text-gray-700">A note on permissions:</strong>{' '}
+          <p className="text-sm text-gray-600 leading-relaxed font-medium">
+            <strong className="text-gray-900 font-bold">A note on permissions:</strong>{' '}
             Shramico requests location access to show you nearby jobs and workers. This
-            permission is optional and can be managed at any time in your device settings.
-            We are transparent about every permission we request and the reason for it.
+            permission is entirely optional and can be managed at any time in your device settings.
+            We are transparent about every permission we request.
           </p>
         </div>
       </div>

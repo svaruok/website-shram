@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react';
 const faqs = [
   {
     q: 'What is Shramico?',
-    a: 'Shramico (Quick Hire) is a mobile hiring platform that connects employers with skilled and semi-skilled workers nearby. Employers can post jobs and review applicants, while workers can browse and apply to local opportunities — all through an intuitive mobile app.',
+    a: 'Shramico is a mobile hiring platform that connects employers with skilled and semi-skilled workers nearby. Employers can post jobs and review applicants, while workers can browse and apply to local opportunities — all through an intuitive mobile app.',
   },
   {
     q: 'How do I register?',
@@ -44,48 +44,57 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-24 bg-[#FAF9F7]">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <div className="section-label mb-4">FAQ</div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-            Frequently asked questions
+    <section id="faq" className="py-32 bg-white relative overflow-hidden border-t border-gray-100">
+      {/* Background glow effects */}
+
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
+            FAQ
+          </div>
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+            Frequently asked{' '}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-burgundy">
+              questions
+            </span>
           </h2>
-          <p className="mt-3 text-gray-500">
+          <p className="mt-6 text-gray-600 text-lg font-medium">
             Can't find what you're looking for? Reach us at{' '}
-            <a href="mailto:support@shramico.com" className="text-burgundy hover:underline font-medium">
+            <a href="mailto:support@shramico.com" className="text-burgundy hover:text-[#5C0014] transition-colors font-bold">
               support@shramico.com
             </a>
           </p>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden"
+              className="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden hover:bg-white hover:border-gray-200 hover:shadow-sm transition-all duration-300"
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
-                className="w-full flex items-center justify-between px-6 py-5 text-left gap-4 hover:bg-gray-50 transition-colors"
+                className="w-full flex items-center justify-between px-6 py-5 text-left gap-4"
                 aria-expanded={open === i}
               >
-                <span className="font-semibold text-gray-900 text-sm">{faq.q}</span>
-                <ChevronDown
-                  size={18}
-                  className={`text-burgundy flex-shrink-0 transition-transform duration-300 ${
-                    open === i ? 'rotate-180' : ''
-                  }`}
-                />
+                <span className="font-bold text-gray-900 text-base tracking-wide">{faq.q}</span>
+                <div className={`w-8 h-8 rounded-full bg-white flex items-center justify-center transition-colors border border-gray-100 ${open === i ? 'bg-burgundy/10 border-burgundy/20' : ''}`}>
+                  <ChevronDown
+                    size={16}
+                    className={`text-gray-400 transition-transform duration-300 ${
+                      open === i ? 'rotate-180 text-burgundy' : ''
+                    }`}
+                  />
+                </div>
               </button>
               <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  open === i ? 'max-h-96' : 'max-h-0'
+                className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                  open === i ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="px-6 pb-5">
-                  <div className="h-px bg-gray-100 mb-4" />
-                  <p className="text-gray-500 text-sm leading-relaxed">{faq.a}</p>
+                <div className="px-6 pb-6">
+                  <div className="h-px w-full bg-gradient-to-r from-gray-200 to-transparent mb-5" />
+                  <p className="text-gray-600 text-sm leading-relaxed font-medium">{faq.a}</p>
                 </div>
               </div>
             </div>
