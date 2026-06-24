@@ -60,7 +60,7 @@ export default function ColosseumPhilosophy() {
   }, []);
 
   useEffect(() => {
-    fetch('http://52.66.12.223:8000/api/v1/stats')
+    fetch('/api/v1/stats')
       .then(async (res) => {
         const text = await res.text();
         try {
