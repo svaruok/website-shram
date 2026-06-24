@@ -16,8 +16,6 @@ export default function Hero() {
       {/* Subtle background pattern */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-[#FAF9F7] via-white to-transparent" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-burgundy/4 blur-3xl" />
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-burgundy/3 blur-3xl" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">

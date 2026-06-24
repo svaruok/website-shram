@@ -21,18 +21,18 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#0a050e] text-white pt-20 pb-10 border-t border-white/5">
+    <footer className="bg-gray-50 text-gray-900 pt-20 pb-10 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-10 pb-12 border-b border-gray-200">
           {/* Brand */}
           <div className="col-span-2">
             <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-8 h-8 bg-burgundy rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-burgundy rounded-lg flex items-center justify-center shadow-sm">
                 <span className="text-white font-bold text-sm"><img src="/Shramico_logo.jpeg" alt="shramico-logo" className='rounded-lg' /></span>
               </div>
-              <span className="font-bold text-xl text-white">Shramico</span>
+              <span className="font-bold text-xl text-gray-900">Shramico</span>
             </div>
-            <p className="text-white/50 text-sm leading-relaxed mb-6 max-w-xs">
+            <p className="text-gray-600 text-sm leading-relaxed mb-6 max-w-xs font-medium">
               Smart Hiring. Trusted Work. Real Opportunities.<br />
               Connecting employers and skilled workers through a seamless mobile experience.
             </p>
@@ -41,23 +41,23 @@ export default function Footer() {
               onClick={handleDownload}
               target={getAppLink() ? "_blank" : undefined}
               rel={getAppLink() ? "noopener noreferrer" : undefined}
-              className="inline-flex items-center gap-2 bg-white/10 hover:bg-burgundy border border-white/20 text-white text-sm font-semibold px-5 py-3 rounded-xl transition-all duration-200"
+              className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 hover:border-burgundy/30 border border-gray-200 text-gray-900 shadow-sm text-sm font-semibold px-5 py-3 rounded-xl transition-all duration-200"
             >
-              <Download size={15} />
+              <Download size={15} className="text-burgundy" />
               Google Play
             </a>
           </div>
 
           {/* Product */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-4">Product</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Product</p>
             <ul className="space-y-3">
               {productLinks.map(({ label, href }) => (
                 <li key={label}>
                   <a
                     href={href}
                     onClick={(e) => handleScrollLink(e, href)}
-                    className="text-white/60 text-sm hover:text-white transition-colors"
+                    className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors"
                   >
                     {label}
                   </a>
@@ -69,7 +69,7 @@ export default function Footer() {
                   onClick={handleDownload}
                   target={getAppLink() ? "_blank" : undefined}
                   rel={getAppLink() ? "noopener noreferrer" : undefined}
-                  className="text-white/60 text-sm hover:text-white transition-colors"
+                  className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors"
                 >
                   Download App
                 </a>
@@ -79,14 +79,14 @@ export default function Footer() {
 
           {/* Support */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-4">Support</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Support</p>
             <ul className="space-y-3">
               {supportLinks.map(({ label, href }) => (
                 <li key={label}>
                   <a
-                    href={href}
+                     href={href}
                     onClick={(e) => handleScrollLink(e, href)}
-                    className="text-white/60 text-sm hover:text-white transition-colors"
+                    className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors"
                   >
                     {label}
                   </a>
@@ -95,7 +95,7 @@ export default function Footer() {
               <li>
                 <a
                   href="mailto:support@shramico.com"
-                  className="text-white/60 text-sm hover:text-white transition-colors"
+                  className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors"
                 >
                   support@shramico.com
                 </a>
@@ -105,12 +105,12 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-4">Legal</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Legal</p>
             <ul className="space-y-3">
               <li>
                 <Link
                   to="/privacy-policy"
-                  className="text-white/60 text-sm hover:text-white transition-colors"
+                  className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors"
                 >
                   Privacy Policy
                 </Link>
@@ -118,7 +118,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/terms-and-conditions"
-                  className="text-white/60 text-sm hover:text-white transition-colors"
+                  className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors"
                 >
                   Terms &amp; Conditions
                 </Link>
@@ -129,13 +129,13 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/30 text-sm">&copy; 2026 Shramico. All Rights Reserved.</p>
+          <p className="text-gray-500 font-medium text-sm">&copy; 2026 Shramico. All Rights Reserved.</p>
           <div className="flex items-center gap-5">
-            <Link to="/privacy-policy" className="text-white/30 text-xs hover:text-white/60 transition-colors">
+            <Link to="/privacy-policy" className="text-gray-500 font-medium text-xs hover:text-burgundy transition-colors">
               Privacy Policy
             </Link>
-            <span className="text-white/20 text-xs">·</span>
-            <Link to="/terms-and-conditions" className="text-white/30 text-xs hover:text-white/60 transition-colors">
+            <span className="text-gray-300 text-xs">·</span>
+            <Link to="/terms-and-conditions" className="text-gray-500 font-medium text-xs hover:text-burgundy transition-colors">
               Terms &amp; Conditions
             </Link>
           </div>

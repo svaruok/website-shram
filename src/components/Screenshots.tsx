@@ -994,6 +994,29 @@ function MockScreen({ label, render, animClass }: { label: string; render: () =>
 export default function Screenshots() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFalling, setIsFalling] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const minSwipeDistance = 50;
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    
+    if (isLeftSwipe) nextScreen();
+    if (isRightSwipe) prevScreen();
+  };
 
   const nextScreen = () => {
     if (isFalling) return;
@@ -1016,8 +1039,6 @@ export default function Screenshots() {
   return (
     <section className="py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden relative">
       {/* Massive Ambient Glows for Background Depth */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[600px] h-[600px] bg-burgundy/5 rounded-full blur-[120px] pointer-events-none z-0" />
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
@@ -1027,7 +1048,7 @@ export default function Screenshots() {
             <span className="text-burgundy">mobile experience</span>
           </h2>
           <p className="mt-4 text-gray-500 max-w-xl mx-auto">
-            Interactive, intuitive, and designed to get work done instantly. Tap the arrows to explore the platform.
+            Interactive, intuitive, and designed to get work done instantly. Swipe or tap the arrows to explore the platform.
           </p>
         </div>
 
@@ -1044,7 +1065,12 @@ export default function Screenshots() {
             </button>
 
             {/* Carousel Container (Coverflow effect) */}
-            <div className="relative flex justify-center items-center perspective-[1200px] w-full max-w-[280px] sm:max-w-[700px] h-[520px]">
+            <div 
+              className="relative flex justify-center items-center perspective-[1200px] w-full max-w-[280px] sm:max-w-[700px] h-[520px] touch-pan-y"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
               
               {/* Left/Prev Phone (Desktop only) */}
               <div className="hidden sm:block absolute left-0 top-1/2 -translate-y-1/2 scale-[0.7] opacity-30 blur-[2px] pointer-events-none z-0 transition-all duration-500 origin-left">
