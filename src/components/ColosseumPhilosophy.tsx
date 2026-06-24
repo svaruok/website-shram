@@ -17,8 +17,6 @@ function CanvasFallback() {
   );
 }
 
-const DOWNLOAD_COUNT = parseInt(import.meta.env.VITE_DOWNLOAD_COUNT ?? '0', 10);
-
 function getVisualProgress(count: number): number {
   if (count < 50000) {
     return 0.42; // First floor + a little bit of extra construction (not fully second floor)
@@ -42,6 +40,7 @@ function getMilestoneLabel(count: number): string {
 export default function ColosseumPhilosophy() {
   const [isMobile, setIsMobile] = useState(false);
   const [inView, setInView] = useState(false);
+  const [downloadCount, setDownloadCount] = useState<number>(0);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -58,6 +57,35 @@ export default function ColosseumPhilosophy() {
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    fetch('http://52.66.12.223:8000/api/v1/stats')
+      .then(async (res) => {
+        const text = await res.text();
+        try {
+          const data = JSON.parse(text);
+          let count: any = 0;
+          if (typeof data === 'number') count = data;
+          else if (typeof data === 'object' && data !== null) {
+            count = data.total_users || data.count || data.users || data.downloads || 0;
+          }
+          return parseInt(String(count), 10);
+        } catch {
+          return parseInt(text, 10);
+        }
+      })
+      .then((count) => {
+        if (!isNaN(count) && count > 0) {
+          setDownloadCount(count);
+        } else {
+          setDownloadCount(0);
+        }
+      })
+      .catch((err) => {
+        console.error('Failed to fetch stats:', err);
+        setDownloadCount(0);
+      });
   }, []);
 
   return (
@@ -77,7 +105,7 @@ export default function ColosseumPhilosophy() {
                 gl={{ antialias: false, powerPreference: 'high-performance', localClippingEnabled: true, alpha: false }}
               >
                 <group visible={inView}>
-                  <CollosseumScene progress={getVisualProgress(DOWNLOAD_COUNT)} isMobile={isMobile} />
+                  <CollosseumScene progress={getVisualProgress(downloadCount)} isMobile={isMobile} />
                 </group>
                 <OrbitControls 
                   target={[0, 1.5, 0]}
@@ -96,20 +124,20 @@ export default function ColosseumPhilosophy() {
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md px-6 py-4 rounded-3xl border border-gray-200 shadow-xl pointer-events-none w-[85%] max-w-sm">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-gray-800 text-[10px] font-black uppercase tracking-widest">
-                  App Downloads
+                  Total Users
                 </span>
                 <span className="text-burgundy text-[12px] font-mono font-bold">
-                  {DOWNLOAD_COUNT.toLocaleString('en-IN')}
+                  {downloadCount.toLocaleString('en-IN')}
                 </span>
               </div>
               <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden mb-2">
                 <div
                   className="h-full bg-gradient-to-r from-burgundy to-gray-900 rounded-full"
-                  style={{ width: `${Math.min((DOWNLOAD_COUNT / 1000000) * 100, 100)}%` }}
+                  style={{ width: `${Math.min((downloadCount / 1000000) * 100, 100)}%` }}
                 />
               </div>
               <p className="text-gray-600 text-[11px] font-bold text-center">
-                {getMilestoneLabel(DOWNLOAD_COUNT)}
+                {getMilestoneLabel(downloadCount)}
               </p>
             </div>
           </div>

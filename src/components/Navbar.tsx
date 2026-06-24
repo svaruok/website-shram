@@ -30,7 +30,7 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-[#0a050e]/80 backdrop-blur-xl shadow-lg border-b border-white/5' : 'bg-transparent'
+        scrolled ? 'bg-white shadow-md border-b border-gray-200' : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -71,7 +71,7 @@ export default function Navbar() {
                 onClick={handleDownload}
                 target={getAppLink() ? "_blank" : undefined}
                 rel={getAppLink() ? "noopener noreferrer" : undefined}
-                className="bg-gray-900 hover:bg-gray-800 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-gray-900/10 transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2"
+                className="bg-burgundy hover:bg-[#a01030] text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-burgundy/20 transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2"
               >
                 <Download size={16} />
                 Download App
@@ -93,7 +93,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden p-2 rounded-xl text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+            className="lg:hidden p-2 rounded-xl text-gray-700 hover:text-burgundy hover:bg-gray-100 transition-colors"
             aria-label="Toggle menu"
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -107,32 +107,32 @@ export default function Navbar() {
           menuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="bg-[#0f0814]/95 backdrop-blur-xl border-t border-white/10 px-4 py-6 shadow-2xl">
+        <div className="bg-white border-t border-gray-100 px-4 py-6 shadow-2xl">
           <div className="flex flex-col gap-2">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-base font-bold text-white/80 hover:text-white hover:bg-white/10 px-4 py-3 rounded-xl transition-all"
+                className="text-base font-bold text-gray-700 hover:text-burgundy hover:bg-gray-50 px-4 py-3 rounded-xl transition-all"
               >
                 {link.label}
               </a>
             ))}
-            <div className="pt-4 border-t border-white/10 mt-2">
+            <div className="pt-4 border-t border-gray-100 mt-2">
               <a
                 href={getAppLink() || '#'}
                 onClick={handleDownload}
                 target={getAppLink() ? "_blank" : undefined}
                 rel={getAppLink() ? "noopener noreferrer" : undefined}
-                className="w-full bg-gradient-to-r from-burgundy to-[#a01030] text-white font-bold rounded-xl py-4 flex items-center justify-center gap-2 shadow-lg shadow-burgundy/30 transition-all"
+                className="w-full bg-burgundy text-white font-bold rounded-xl py-4 flex items-center justify-center gap-2 shadow-lg hover:bg-burgundy-dark transition-all"
               >
                 <Download size={18} />
                 Download App
               </a>
               <div className="mt-4 flex justify-center">
-                <div className="bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-lg border border-white/20 shadow-xl">
-                  <p className="text-white text-[13px] font-black tracking-wide text-center">
+                <div className="bg-white px-4 py-2.5 rounded-lg border border-gray-200 shadow-sm">
+                  <p className="text-burgundy text-[13px] font-black tracking-wide text-center">
                     Every download rebuilds the Colosseum
                   </p>
                 </div>
