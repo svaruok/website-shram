@@ -123,6 +123,14 @@ export default function Footer() {
                   Terms &amp; Conditions
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/account-deletion"
+                  className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors"
+                >
+                  Account Deletion
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -137,6 +145,10 @@ export default function Footer() {
             <span className="text-gray-300 text-xs">·</span>
             <Link to="/terms-and-conditions" className="text-gray-500 font-medium text-xs hover:text-burgundy transition-colors">
               Terms &amp; Conditions
+            </Link>
+            <span className="text-gray-300 text-xs">·</span>
+            <Link to="/account-deletion" className="text-gray-500 font-medium text-xs hover:text-burgundy transition-colors">
+              Account Deletion
             </Link>
           </div>
         </div>

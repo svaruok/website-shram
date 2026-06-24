@@ -76,7 +76,12 @@ export default function ColosseumPhilosophy() {
         }
       })
       .then((count) => {
-        if (!isNaN(count) && count > 0) {
+        const envOverride = parseInt(import.meta.env.VITE_DOWNLOAD_COUNT ?? '0', 10);
+        if (envOverride > 0) {
+          // If a manual override is set in .env, use it for testing visuals
+          setDownloadCount(envOverride);
+        } else if (!isNaN(count) && count > 0) {
+          // Otherwise, use the real API data
           setDownloadCount(count);
         } else {
           setDownloadCount(0);

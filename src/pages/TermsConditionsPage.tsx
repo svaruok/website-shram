@@ -315,8 +315,26 @@ export default function TermsConditionsPage() {
         </div>
       </div>
 
+      <div>
+        <h3 className="font-bold text-gray-900 text-base mb-3">24. Account Deletion</h3>
+        <p className="mb-3">
+          You have the right to delete your Shramico account at any time. You may initiate the account deletion process through two methods:
+        </p>
+        <ul className="list-disc list-inside space-y-1.5 text-gray-500 mb-4">
+          <li>
+            <strong>In-App Deletion:</strong> Navigate to the <strong>Support</strong> section within the app and select <strong>Delete Account</strong>. You will be required to pass a confirmation step to finalize the deletion.
+          </li>
+          <li>
+            <strong>Email Request:</strong> Send an email to <a href="mailto:support@shramico.com" className="text-burgundy hover:underline">support@shramico.com</a> requesting account deletion.
+          </li>
+        </ul>
+        <p className="mb-8">
+          Please note that upon deletion, you will lose access to all account data and service history. Certain data may be retained for legal, compliance, and fraud prevention purposes as outlined in our Privacy Policy.
+        </p>
+      </div>
+
       <div className="bg-burgundy/5 border border-burgundy/15 rounded-2xl p-6">
-        <h3 className="font-bold text-gray-900 text-base mb-3">24. Acceptance</h3>
+        <h3 className="font-bold text-gray-900 text-base mb-3">25. Acceptance</h3>
         <p>
           By creating an account, accessing, or using Shramico, you acknowledge that you have
           read, understood, and agreed to these Terms and Conditions.

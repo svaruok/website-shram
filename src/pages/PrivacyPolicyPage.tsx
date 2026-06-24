@@ -305,9 +305,16 @@ export default function PrivacyPolicyPage() {
       <div>
         <h3 className="font-bold text-gray-900 text-base mb-3">12. Account Deletion</h3>
         <p className="mb-3">
-          Users may request deletion of their account through the application or by contacting
-          Shramico support.
+          Users may request the deletion of their account and associated data using one of the following two methods:
         </p>
+        <ul className="list-disc list-inside space-y-1.5 text-gray-500 mb-4">
+          <li>
+            <strong>Through the App:</strong> Navigate to the <strong>Support</strong> section and tap the <strong>Delete Account</strong> button. You will be prompted with a confirmation step to prevent accidental deletion.
+          </li>
+          <li>
+            <strong>Through Email:</strong> Send a written account deletion request to our support team at <a href="mailto:support@shramico.com" className="text-burgundy hover:underline">support@shramico.com</a>.
+          </li>
+        </ul>
         <p className="mb-2">Upon account deletion:</p>
         <ul className="list-disc list-inside space-y-1.5 text-gray-500 mb-3">
           <li>Access to the account will be removed.</li>
