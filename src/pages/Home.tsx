@@ -1,5 +1,5 @@
 import Navbar from '../components/Navbar';
-import CollosseumHero from '../components/hero/CollosseumHero';
+import Hero from '../components/Hero';
 import TrustStats from '../components/TrustStats';
 import ColosseumPhilosophy from '../components/ColosseumPhilosophy';
 import Features from '../components/Features';
@@ -17,7 +17,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
-        <CollosseumHero />
+        <Hero />
         <TrustStats />
         <ColosseumPhilosophy />
         <Features />
