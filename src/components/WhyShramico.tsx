@@ -32,25 +32,23 @@ const pillars = [
 
 export default function WhyShramico() {
   return (
-    <section id="why-shramico" className="py-32 bg-[#0f0814] relative overflow-hidden border-t border-white/5">
+    <section id="why-shramico" className="py-32 bg-white relative overflow-hidden border-t border-gray-100">
       {/* Background glow effects */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-burgundy/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[40rem] h-[20rem] bg-[#e8a060]/5 rounded-t-[100%] blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left */}
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/70 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
               Why Choose Shramico
             </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight mb-6">
               A platform you can{' '}
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#e8a060] to-burgundy">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-burgundy">
                 rely on
               </span>
             </h2>
-            <p className="text-white/50 text-lg mb-12 leading-relaxed">
+            <p className="text-gray-600 text-lg mb-12 leading-relaxed font-medium">
               Shramico was built to solve a real problem: connecting skilled workers with
               employers in a fast, trustworthy, and accessible way. Here's why thousands
               choose us.
@@ -58,12 +56,12 @@ export default function WhyShramico() {
             <div className="space-y-8">
               {reasons.map(({ icon: Icon, title, desc }) => (
                 <div key={title} className="group flex gap-5">
-                  <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#e8a060]/20 group-hover:border-[#e8a060]/50 transition-all duration-300 shadow-lg mt-1">
-                    <Icon size={24} className="text-[#e8a060] group-hover:text-white transition-colors" />
+                  <div className="w-14 h-14 bg-white border border-gray-100 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:border-burgundy/30 transition-all duration-300 shadow-sm mt-1">
+                    <Icon size={24} className="text-burgundy group-hover:scale-110 transition-transform" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-white text-xl mb-2 group-hover:text-[#e8a060] transition-colors">{title}</h3>
-                    <p className="text-white/50 text-sm leading-relaxed">{desc}</p>
+                    <h3 className="font-bold text-gray-900 text-xl mb-2">{title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
                   </div>
                 </div>
               ))}
@@ -75,36 +73,35 @@ export default function WhyShramico() {
             {pillars.map(({ value, desc }) => (
               <div
                 key={value}
-                className="group bg-white/[0.02] backdrop-blur-xl rounded-[2rem] border border-white/10 p-8 hover:bg-white/[0.04] hover:border-white/20 transition-all duration-500"
+                className="group bg-gray-50 rounded-[2rem] border border-gray-100 p-8 hover:bg-white hover:shadow-xl hover:border-gray-200 transition-all duration-500"
               >
-                <div className="w-10 h-1 bg-gradient-to-r from-burgundy to-[#e8a060] rounded-full mb-6 group-hover:scale-x-150 transform origin-left transition-transform duration-500" />
-                <h3 className="font-extrabold text-white text-xl mb-3">{value}</h3>
-                <p className="text-white/50 text-sm leading-relaxed">{desc}</p>
+                <div className="w-10 h-1 bg-gradient-to-r from-burgundy to-gray-900 rounded-full mb-6 group-hover:scale-x-150 transform origin-left transition-transform duration-500" />
+                <h3 className="font-extrabold text-gray-900 text-xl mb-3">{value}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed font-medium">{desc}</p>
               </div>
             ))}
 
-            {/* Testimonial placeholder */}
-            <div className="col-span-2 bg-gradient-to-br from-burgundy to-[#5C0014] rounded-[2rem] p-8 text-white relative overflow-hidden shadow-2xl">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-[40px] pointer-events-none" />
+            {/* Testimonial block - Keeping it dark for brand contrast! */}
+            <div className="col-span-2 bg-gradient-to-br from-burgundy to-[#5C0014] rounded-[2rem] p-8 text-white relative overflow-hidden shadow-xl">
               <div className="relative z-10">
                 <div className="flex gap-1 mb-6">
                   {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 fill-current text-[#e8a060]" viewBox="0 0 20 20">
+                    <svg key={i} className="w-5 h-5 fill-current text-gray-900" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
                 </div>
-                <p className="text-white/90 text-lg leading-relaxed mb-6 font-medium">
+                <p className="text-white text-lg leading-relaxed mb-6 font-medium">
                   "Shramico made it so easy to find a qualified electrician near my shop within
                   an hour. The app is clean, fast, and trustworthy."
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-bold text-sm border border-white/30">
+                  <div className="w-10 h-10 rounded-full bg-white text-burgundy flex items-center justify-center font-extrabold text-sm border border-white/30 shadow-sm">
                     EM
                   </div>
                   <div>
                     <p className="font-bold text-white text-sm">Employer</p>
-                    <p className="text-white/60 text-xs">Mumbai, India</p>
+                    <p className="text-white/80 text-xs font-semibold">Mumbai, India</p>
                   </div>
                 </div>
               </div>

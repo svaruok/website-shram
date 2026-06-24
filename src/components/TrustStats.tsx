@@ -11,45 +11,48 @@ const stats = [
 
 export default function TrustStats() {
   return (
-    <section className="py-24 bg-[#0f0814] relative overflow-hidden border-t border-white/5">
+    <section className="py-24 bg-white relative overflow-hidden border-t border-gray-100 z-20">
       {/* Background glow effects */}
-      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-burgundy/10 rounded-full blur-[100px] pointer-events-none -translate-y-1/2" />
-      <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-[#e8a060]/10 rounded-full blur-[100px] pointer-events-none -translate-y-1/2" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/70 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
             Platform Highlights
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
             Built for trust. <br className="sm:hidden" />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-[#e8a060]">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-burgundy to-gray-900">
               Designed for speed.
             </span>
           </h2>
-          <p className="mt-6 text-white/50 max-w-xl mx-auto text-lg">
+          <p className="mt-6 text-gray-600 max-w-xl mx-auto text-lg font-medium">
             Shramico is engineered to make every hire and every job application fast, reliable, and secure.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
-          {stats.map(({ icon: Icon, value, label, desc }) => (
-            <div
-              key={label}
-              className="group relative bg-white/[0.03] backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:bg-white/[0.05] hover:border-burgundy/50 transition-all duration-500 text-center overflow-hidden"
-            >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-t from-burgundy/10 to-transparent pointer-events-none" />
-              
-              <div className="relative z-10">
-                <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mx-auto mb-4 border border-white/10 group-hover:bg-burgundy/20 group-hover:border-burgundy/50 transition-all duration-300 shadow-lg">
-                  <Icon size={20} className="text-white/80 group-hover:text-white transition-colors" />
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+          {stats.map((stat, index) => {
+            const Icon = stat.icon;
+            return (
+              <div 
+                key={index} 
+                className="group flex flex-col items-center text-center p-8 bg-gray-50 border border-gray-100 rounded-[2rem] hover:bg-white hover:border-gray-200 hover:shadow-xl transition-all duration-300"
+              >
+                <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-white border border-gray-100 text-burgundy mb-6 shadow-sm group-hover:scale-110 group-hover:border-burgundy/20 transition-all duration-300">
+                  <Icon size={24} className="currentColor" />
                 </div>
-                <p className="text-3xl font-extrabold text-white mb-1 tracking-tight">{value}</p>
-                <p className="text-xs font-bold text-[#e8a060] uppercase tracking-wider mb-2">{label}</p>
-                <p className="text-[11px] text-white/40 leading-tight">{desc}</p>
+                <h3 className="text-3xl font-black text-gray-900 tracking-tight mb-2">
+                  {stat.value}
+                </h3>
+                <p className="font-bold text-gray-900 mb-1">
+                  {stat.label}
+                </p>
+                <p className="text-sm font-medium text-gray-500">
+                  {stat.desc}
+                </p>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

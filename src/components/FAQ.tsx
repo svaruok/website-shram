@@ -44,25 +44,23 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-32 bg-[#0f0814] relative overflow-hidden border-t border-white/5">
+    <section id="faq" className="py-32 bg-white relative overflow-hidden border-t border-gray-100">
       {/* Background glow effects */}
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-[#e8a060]/10 rounded-full blur-[120px] pointer-events-none -translate-y-1/2" />
-      <div className="absolute bottom-0 left-1/4 w-[30rem] h-[30rem] bg-burgundy/10 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/70 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
             FAQ
           </div>
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
             Frequently asked{' '}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#e8a060] to-burgundy">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-burgundy">
               questions
             </span>
           </h2>
-          <p className="mt-6 text-white/50 text-lg">
+          <p className="mt-6 text-gray-600 text-lg font-medium">
             Can't find what you're looking for? Reach us at{' '}
-            <a href="mailto:support@shramico.com" className="text-[#e8a060] hover:text-white transition-colors font-medium">
+            <a href="mailto:support@shramico.com" className="text-burgundy hover:text-[#5C0014] transition-colors font-bold">
               support@shramico.com
             </a>
           </p>
@@ -72,19 +70,19 @@ export default function FAQ() {
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="bg-white/[0.02] backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden hover:bg-white/[0.04] transition-all duration-300"
+              className="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden hover:bg-white hover:border-gray-200 hover:shadow-sm transition-all duration-300"
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full flex items-center justify-between px-6 py-5 text-left gap-4"
                 aria-expanded={open === i}
               >
-                <span className="font-bold text-white text-base tracking-wide">{faq.q}</span>
-                <div className={`w-8 h-8 rounded-full bg-white/5 flex items-center justify-center transition-colors ${open === i ? 'bg-burgundy/20' : ''}`}>
+                <span className="font-bold text-gray-900 text-base tracking-wide">{faq.q}</span>
+                <div className={`w-8 h-8 rounded-full bg-white flex items-center justify-center transition-colors border border-gray-100 ${open === i ? 'bg-burgundy/10 border-burgundy/20' : ''}`}>
                   <ChevronDown
                     size={16}
-                    className={`text-white/60 transition-transform duration-300 ${
-                      open === i ? 'rotate-180 text-[#e8a060]' : ''
+                    className={`text-gray-400 transition-transform duration-300 ${
+                      open === i ? 'rotate-180 text-burgundy' : ''
                     }`}
                   />
                 </div>
@@ -95,8 +93,8 @@ export default function FAQ() {
                 }`}
               >
                 <div className="px-6 pb-6">
-                  <div className="h-px w-full bg-gradient-to-r from-white/10 to-transparent mb-5" />
-                  <p className="text-white/50 text-sm leading-relaxed">{faq.a}</p>
+                  <div className="h-px w-full bg-gradient-to-r from-gray-200 to-transparent mb-5" />
+                  <p className="text-gray-600 text-sm leading-relaxed font-medium">{faq.a}</p>
                 </div>
               </div>
             </div>

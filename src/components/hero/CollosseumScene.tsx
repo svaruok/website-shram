@@ -1,5 +1,5 @@
 import { useMemo, useEffect, useRef } from 'react';
-import { useFrame, useThree } from '@react-three/fiber';
+import { useFrame } from '@react-three/fiber';
 import { useGLTF, Sky } from '@react-three/drei';
 import * as THREE from 'three';
 
@@ -93,44 +93,14 @@ function AnimatedTools({ progress }: { progress: number }) {
   );
 }
 
-// ─── Camera auto-orbit (Tied to Scroll!) ─────────────────────────────────────────
-function CameraRig({ isMobile }: { isMobile: boolean }) {
-  const target = useMemo(() => new THREE.Vector3(0, 2, 0), []);
-  
-  useFrame(({ clock, camera }) => {
-    const t    = clock.getElapsedTime();
-    const pull = Math.min(1, t / 4.0);
-    
-    const baseR = isMobile ? 14 : 11;
-    const r     = 15 + pull * baseR;
-    
-    // Add a gentle floating effect that is always playing
-    const currentY = 6 + pull * 8 + Math.sin(t * 0.5) * 0.5;
-    
-    // THE MAGIC: Tie rotation directly to scroll position!
-    // As you scroll down 1 full screen height, it rotates ~90 degrees.
-    const scrollOffset = typeof window !== 'undefined' ? window.scrollY : 0;
-    const scrollAngle = (scrollOffset / window.innerHeight) * (Math.PI / 1.5);
-    
-    // Combine initial gentle auto-pan with the aggressive scroll rotation
-    const autoPan = Math.sin(t * 0.1) * -0.2;
-    const angle = autoPan - scrollAngle;
-
-    camera.position.set(
-      Math.sin(angle) * r,
-      currentY,
-      Math.cos(angle) * r,
-    );
-    camera.lookAt(target);
-  });
-  return null;
-}
-
 // ─── The Imported Colosseum Model ─────────────────────────────────────────────
 function ColosseumModel({ progress }: { progress: number }) {
   const { scene } = useGLTF('/models/colosseum_rome_italy_compressed.glb');
-  const clipPlane = useMemo(() => new THREE.Plane(new THREE.Vector3(0, -1, 0), 0), []);
   const boxInfo   = useRef({ minY: 0, maxY: 0, height: 0 });
+  const customUniforms = useRef({
+    clipY: { value: 1000 },
+    clipRadiusSq: { value: 1800.0 } // Safely covers the entire Colosseum (radius ~42)
+  });
 
   useEffect(() => {
     const box  = new THREE.Box3().setFromObject(scene);
@@ -154,7 +124,7 @@ function ColosseumModel({ progress }: { progress: number }) {
       maxY: finalBox.max.y,
       height: finalBox.max.y - finalBox.min.y,
     };
-    clipPlane.constant = finalBox.min.y - 1;
+    customUniforms.current.clipY.value = finalBox.min.y - 1;
 
     scene.traverse((child) => {
       if ((child as THREE.Mesh).isMesh) {
@@ -162,22 +132,45 @@ function ColosseumModel({ progress }: { progress: number }) {
         if (mesh.material) {
           const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
           mats.forEach(mat => {
-            mat.clippingPlanes = [clipPlane];
-            mat.clipShadows    = false; // no shadows = faster
-            mat.side           = THREE.DoubleSide;
-            mat.needsUpdate    = true;
+            mat.clippingPlanes = []; // Remove standard clipping
+            mat.side = THREE.DoubleSide;
+            
+            mat.onBeforeCompile = (shader) => {
+              shader.uniforms.clipY = customUniforms.current.clipY;
+              shader.uniforms.clipRadiusSq = customUniforms.current.clipRadiusSq;
+
+              shader.vertexShader = shader.vertexShader.replace(
+                'void main() {',
+                `varying vec3 vWorldPosCustom;
+                 void main() {
+                   vWorldPosCustom = (modelMatrix * vec4(position, 1.0)).xyz;`
+              );
+
+              shader.fragmentShader = shader.fragmentShader.replace(
+                'void main() {',
+                `uniform float clipY;
+                 uniform float clipRadiusSq;
+                 varying vec3 vWorldPosCustom;
+                 void main() {
+                   float distSq = vWorldPosCustom.x * vWorldPosCustom.x + vWorldPosCustom.z * vWorldPosCustom.z;
+                   if (distSq < clipRadiusSq && vWorldPosCustom.y > clipY) {
+                     discard;
+                   }`
+              );
+            };
+            mat.needsUpdate = true;
           });
         }
-        mesh.castShadow    = false; // no shadows = faster
+        mesh.castShadow    = false;
         mesh.receiveShadow = false;
       }
     });
-  }, [scene, clipPlane]);
+  }, [scene]);
 
   useFrame(() => {
     const rawTarget = boxInfo.current.minY + (boxInfo.current.height * progress * 1.05);
     const targetC   = Math.max(0.5, rawTarget);
-    clipPlane.constant += (targetC - clipPlane.constant) * 0.04;
+    customUniforms.current.clipY.value += (targetC - customUniforms.current.clipY.value) * 0.04;
   });
 
   return <primitive object={scene} />;
@@ -189,41 +182,27 @@ interface CollosseumSceneProps {
   isMobile: boolean;
 }
 
-export default function CollosseumScene({ progress: actualProgress, isMobile }: CollosseumSceneProps) {
-  // The user requested the ruins model to be fully visible (100%) at all times up to 999,999.
-  // The hammers will work at the top of the fully generated ruins.
-  const progress = 1.0;
+export default function CollosseumScene({ progress, isMobile }: CollosseumSceneProps) {
 
   return (
     <>
       {/* Warm sandy golden sky */}
-      <color attach="background" args={['#e6b981']} />
-      <fog attach="fog" color="#e6b981" near={50} far={180} />
-
-      <Sky 
-        distance={450000} 
-        sunPosition={[40, 15, -20]} 
-        turbidity={1.5} 
-        rayleigh={1.2} 
-        mieCoefficient={0.005} 
-        mieDirectionalG={0.8} 
-      />
+      <color attach="background" args={['#f9fafb']} />
+      <fog attach="fog" color="#f9fafb" near={50} far={180} />
 
       {/* ── LIGHTING — pure directional, no HDRI env ──────────────────────── */}
-      <ambientLight intensity={2.0} color="#ffe8b0" />
-      <directionalLight position={[30, 35, 20]} intensity={3.5} color="#ffcc60" />
-      <directionalLight position={[-20, 15, -15]} intensity={0.8} color="#ffd090" />
-
-      <CameraRig isMobile={isMobile} />
+      <ambientLight intensity={2.0} color="#ffffff" />
+      <directionalLight position={[30, 35, 20]} intensity={3.5} color="#ffffff" />
+      <directionalLight position={[-20, 15, -15]} intensity={0.8} color="#e5e7eb" />
 
       {/* Ground */}
       <mesh position={[0, -0.6, 0]}>
-        <cylinderGeometry args={[18, 19, 0.8, 32]} />  {/* reduced segments from 64 → 32 */}
-        <meshStandardMaterial color="#e8c98a" roughness={0.9} />
+        <cylinderGeometry args={[42, 44, 0.8, 64]} />  {/* Increased radius to fully support the Colosseum */}
+        <meshStandardMaterial color="#f3f4f6" roughness={0.9} />
       </mesh>
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.0, 0]}>
         <circleGeometry args={[2000, 32]} />
-        <meshStandardMaterial color="#c0a060" roughness={1} />
+        <meshStandardMaterial color="#e5e7eb" roughness={1} />
       </mesh>
 
       <AnimatedTools progress={progress} />

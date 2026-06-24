@@ -57,29 +57,27 @@ export default function Contact() {
   };
 
   const inputClass =
-    "w-full px-5 py-4 rounded-xl border border-white/10 text-sm text-white placeholder-white/30 bg-white/5 focus:outline-none focus:ring-2 focus:ring-[#e8a060]/40 focus:border-[#e8a060]/60 transition-all duration-300 backdrop-blur-md";
+    "w-full px-5 py-4 rounded-xl border border-gray-200 text-sm text-gray-900 placeholder-gray-400 bg-white focus:outline-none focus:ring-2 focus:ring-burgundy/20 focus:border-burgundy/30 transition-all duration-300 shadow-sm";
 
   return (
-    <section id="contact" className="py-32 bg-[#0a050e] relative overflow-hidden border-t border-white/5">
+    <section id="contact" className="py-32 bg-white relative overflow-hidden border-t border-gray-100">
       {/* Background glow effects */}
-      <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-burgundy/10 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-[#e8a060]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/70 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
             Contact & Support
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight">
             We're here to{' '}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-burgundy to-[#e8a060]">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-burgundy to-gray-900">
               help
             </span>
           </h2>
 
-          <p className="mt-6 text-white/50 max-w-xl mx-auto text-lg">
+          <p className="mt-6 text-gray-600 max-w-xl mx-auto text-lg font-medium">
             Have a question, feedback, or partnership enquiry? Reach out and
             our team will get back to you promptly.
           </p>
@@ -106,38 +104,38 @@ export default function Contact() {
             ].map(({ icon: Icon, label, value, sub, href }) => (
               <div
                 key={label}
-                className="group flex gap-5 p-6 bg-white/[0.02] backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/[0.04] transition-all duration-500"
+                className="group flex gap-5 p-6 bg-gray-50 rounded-3xl border border-gray-100 hover:bg-white hover:border-gray-200 hover:shadow-md transition-all duration-500"
               >
-                <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-burgundy/20 group-hover:border-burgundy/50 transition-all duration-300">
-                  <Icon size={20} className="text-[#e8a060] group-hover:text-white" />
+                <div className="w-12 h-12 bg-white border border-gray-100 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:border-burgundy/30 transition-all duration-300 shadow-sm text-burgundy">
+                  <Icon size={20} className="currentColor group-hover:scale-110 transition-transform" />
                 </div>
 
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-white/40 mb-1">
+                  <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-1">
                     {label}
                   </p>
 
                   {href ? (
                     <a
                       href={href}
-                      className="font-bold text-white text-base hover:text-[#e8a060] transition-colors"
+                      className="font-bold text-gray-900 text-base hover:text-burgundy transition-colors"
                     >
                       {value}
                     </a>
                   ) : (
-                    <p className="font-bold text-white text-base">
+                    <p className="font-bold text-gray-900 text-base">
                       {value}
                     </p>
                   )}
 
-                  <p className="text-white/40 text-xs mt-1.5 leading-relaxed">{sub}</p>
+                  <p className="text-gray-500 text-xs mt-1.5 leading-relaxed font-medium">{sub}</p>
                 </div>
               </div>
             ))}
 
             {/* Social */}
-            <div className="p-6 bg-white/[0.02] backdrop-blur-xl rounded-3xl border border-white/10">
-              <p className="text-xs font-bold uppercase tracking-widest text-white/40 mb-4">
+            <div className="p-6 bg-gray-50 rounded-3xl border border-gray-100">
+              <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">
                 Follow Us
               </p>
 
@@ -165,7 +163,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     title={label}
-                    className="w-12 h-12 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-[#e8a060] hover:border-[#e8a060] hover:text-white text-white/60 transition-all duration-300 shadow-lg hover:-translate-y-1"
+                    className="w-12 h-12 bg-white border border-gray-200 rounded-2xl flex items-center justify-center hover:border-burgundy/30 text-gray-500 hover:text-burgundy transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1"
                   >
                     <Icon size={20} />
                   </a>
@@ -175,24 +173,23 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="lg:col-span-3 bg-white/[0.02] backdrop-blur-xl rounded-[2rem] border border-white/10 p-8 sm:p-10 shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#e8a060]/10 rounded-full blur-[80px] pointer-events-none" />
+          <div className="lg:col-span-3 bg-gray-50 rounded-[2rem] border border-gray-100 p-8 sm:p-10 shadow-xl relative overflow-hidden">
             
-            <h3 className="font-extrabold text-white text-2xl mb-8 tracking-tight relative z-10">
+            <h3 className="font-extrabold text-gray-900 text-2xl mb-8 tracking-tight relative z-10">
               Send a message
             </h3>
 
             {sent ? (
               <div className="flex flex-col items-center justify-center py-16 text-center relative z-10">
-                <div className="w-16 h-16 bg-[#e8a060]/20 border border-[#e8a060]/30 rounded-full flex items-center justify-center mb-6 shadow-lg shadow-[#e8a060]/20">
-                  <Send size={24} className="text-[#e8a060]" />
+                <div className="w-16 h-16 bg-green-50 border border-green-100 rounded-full flex items-center justify-center mb-6 shadow-sm">
+                  <Send size={24} className="text-green-600" />
                 </div>
 
-                <h4 className="font-bold text-white text-xl mb-2">
+                <h4 className="font-bold text-gray-900 text-xl mb-2">
                   Message received!
                 </h4>
 
-                <p className="text-white/50 text-sm">
+                <p className="text-gray-500 text-sm font-medium">
                   We'll get back to you within one business day.
                 </p>
               </div>

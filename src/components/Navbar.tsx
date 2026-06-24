@@ -44,19 +44,19 @@ export default function Navbar() {
             <div className="w-9 h-9 bg-burgundy rounded-xl flex items-center justify-center shadow-lg shadow-burgundy/20 group-hover:shadow-burgundy/40 transition-all duration-300">
               <span className="text-white font-bold text-sm leading-none"><img src="/Shramico_logo.jpeg" alt="Shramico-logo" className='rounded-xl' /></span>
             </div>
-            <span className="font-extrabold text-xl tracking-tight text-white">
+            <span className="font-extrabold text-xl tracking-tight text-gray-900">
               Shramico
             </span>
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden xl:flex items-center gap-1 bg-white/[0.03] backdrop-blur-md border border-white/10 px-2 py-1.5 rounded-2xl">
+          <div className="hidden xl:flex items-center gap-1 bg-gray-500/5 backdrop-blur-md border border-gray-200 px-2 py-1.5 rounded-2xl">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-semibold text-white/70 hover:text-white hover:bg-white/10 px-4 py-2 rounded-xl transition-all duration-300"
+                className="text-sm font-semibold text-gray-700 hover:text-gray-900 hover:bg-gray-200/50 px-4 py-2 rounded-xl transition-all duration-300"
               >
                 {link.label}
               </a>
@@ -71,7 +71,7 @@ export default function Navbar() {
                 onClick={handleDownload}
                 target={getAppLink() ? "_blank" : undefined}
                 rel={getAppLink() ? "noopener noreferrer" : undefined}
-                className="bg-white hover:bg-gray-100 text-[#0a050e] font-bold text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-white/10 transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2"
+                className="bg-gray-900 hover:bg-gray-800 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-gray-900/10 transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2"
               >
                 <Download size={16} />
                 Download App
@@ -82,8 +82,8 @@ export default function Navbar() {
                 scrolled ? 'opacity-0 scale-y-0 h-0 mt-0 pointer-events-none' : 'opacity-100 scale-y-100 h-8 mt-1'
               }`}
             >
-              <div className="bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-lg shadow-xl shadow-black/20 border border-white/40">
-                <p className="text-[#800020] text-[13px] font-black tracking-wide">
+              <div className="bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-lg shadow-xl shadow-gray-200 border border-gray-100">
+                <p className="text-burgundy text-[13px] font-black tracking-wide">
                   Every download rebuilds the Colosseum
                 </p>
               </div>
