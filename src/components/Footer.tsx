@@ -141,13 +141,7 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row items-center gap-3">
             <p className="text-gray-500 font-medium text-sm">&copy; 2026 Shramico. All Rights Reserved.</p>
             {/* DPIIT Badge */}
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm">
-              <span className="text-[10px] font-black text-[#FF9933] tracking-wide">▐</span>
-              <span className="text-[10px] font-black text-white bg-[#FF9933] px-1 rounded-sm leading-tight">DPIIT</span>
-              <span className="text-[10px] font-bold text-gray-600 leading-tight">Recognized Startup</span>
-              <span className="text-gray-300 text-[10px]">·</span>
-              <span className="text-[10px] font-bold text-[#128807] leading-tight">Startup India</span>
-            </div>
+            <img src="/dpiit-logo.jpg" alt="DPIIT Recognized Startup India" className="h-8 object-contain mix-blend-multiply" />
           </div>
           <div className="flex items-center gap-5">
             <Link to="/privacy-policy" className="text-gray-500 font-medium text-xs hover:text-burgundy transition-colors">
