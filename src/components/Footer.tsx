@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { Download } from 'lucide-react';
 import { handleDownload, getAppLink } from '../utils/download';
 
-
 const productLinks = [
   { label: 'Features', href: '#features' },
   { label: 'How It Works', href: '#how-it-works' },
@@ -23,7 +22,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-50 text-gray-900 pt-20 pb-10 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-10 pb-12 border-b border-gray-200">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-10 pb-12 border-b border-gray-200">
           {/* Brand */}
           <div className="col-span-2">
             <div className="flex items-center gap-2.5 mb-5">
@@ -77,6 +76,17 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Company */}
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Company</p>
+            <ul className="space-y-3">
+              <li><Link to="/about" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">About Us</Link></li>
+              <li><Link to="/hire-workers" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">Hire Workers</Link></li>
+              <li><Link to="/find-jobs" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">Find Jobs</Link></li>
+              <li><Link to="/blog" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">Blog</Link></li>
+            </ul>
+          </div>
+
           {/* Support */}
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Support</p>
@@ -108,26 +118,17 @@ export default function Footer() {
             <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Legal</p>
             <ul className="space-y-3">
               <li>
-                <Link
-                  to="/privacy-policy"
-                  className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors"
-                >
+                <Link to="/privacy-policy" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/terms-and-conditions"
-                  className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors"
-                >
+                <Link to="/terms-and-conditions" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">
                   Terms &amp; Conditions
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/account-deletion"
-                  className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors"
-                >
+                <Link to="/account-deletion" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">
                   Account Deletion
                 </Link>
               </li>
@@ -137,7 +138,17 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 font-medium text-sm">&copy; 2026 Shramico. All Rights Reserved.</p>
+          <div className="flex flex-col sm:flex-row items-center gap-3">
+            <p className="text-gray-500 font-medium text-sm">&copy; 2026 Shramico. All Rights Reserved.</p>
+            {/* DPIIT Badge */}
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm">
+              <span className="text-[10px] font-black text-[#FF9933] tracking-wide">▐</span>
+              <span className="text-[10px] font-black text-white bg-[#FF9933] px-1 rounded-sm leading-tight">DPIIT</span>
+              <span className="text-[10px] font-bold text-gray-600 leading-tight">Recognized Startup</span>
+              <span className="text-gray-300 text-[10px]">·</span>
+              <span className="text-[10px] font-bold text-[#128807] leading-tight">Startup India</span>
+            </div>
+          </div>
           <div className="flex items-center gap-5">
             <Link to="/privacy-policy" className="text-gray-500 font-medium text-xs hover:text-burgundy transition-colors">
               Privacy Policy
