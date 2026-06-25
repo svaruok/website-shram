@@ -124,17 +124,6 @@ export default function Navbar() {
                 Download App
               </a>
             </div>
-            <div
-              className={`transition-all duration-500 origin-top flex flex-col items-end ${
-                scrolled ? 'opacity-0 scale-y-0 h-0 mt-0 pointer-events-none' : 'opacity-100 scale-y-100 h-8 mt-1'
-              }`}
-            >
-              <div className="bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-lg shadow-xl shadow-gray-200 border border-gray-100">
-                <p className="text-burgundy text-[13px] font-black tracking-wide">
-                  Every download rebuilds the Colosseum
-                </p>
-              </div>
-            </div>
           </div>
 
           {/* Mobile menu button */}
