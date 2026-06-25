@@ -22,7 +22,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-50 text-gray-900 pt-20 pb-10 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-10 pb-12 border-b border-gray-200">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-10 pb-12 border-b border-gray-200">
           {/* Brand */}
           <div className="col-span-2">
             <div className="flex items-center gap-2.5 mb-5">
@@ -84,6 +84,18 @@ export default function Footer() {
               <li><Link to="/hire-workers" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">Hire Workers</Link></li>
               <li><Link to="/find-jobs" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">Find Jobs</Link></li>
               <li><Link to="/blog" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">Blog</Link></li>
+            </ul>
+          </div>
+
+          {/* Locations (SEO Backlinks) */}
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Locations</p>
+            <ul className="space-y-3">
+              <li><Link to="/construction-workers-pune" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">Workers in Pune</Link></li>
+              <li><Link to="/workers-mumbai" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">Workers in Mumbai</Link></li>
+              <li><Link to="/workers-nashik" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">Workers in Nashik</Link></li>
+              <li><Link to="/electrician-pune" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">Electricians (Pune)</Link></li>
+              <li><Link to="/plumber-pune" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">Plumbers (Pune)</Link></li>
             </ul>
           </div>
 
