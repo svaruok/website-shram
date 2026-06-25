@@ -9,8 +9,8 @@ const productLinks = [
 ];
 
 const supportLinks = [
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'FAQ', to: '/faq' },
+  { label: 'Contact', to: '/contact' },
 ];
 
 export default function Footer() {
@@ -117,15 +117,14 @@ export default function Footer() {
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Support</p>
             <ul className="space-y-3">
-              {supportLinks.map(({ label, href }) => (
+              {supportLinks.map(({ label, to }) => (
                 <li key={label}>
-                  <a
-                     href={href}
-                    onClick={(e) => handleScrollLink(e, href)}
+                  <Link
+                    to={to}
                     className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors"
                   >
                     {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
               <li>

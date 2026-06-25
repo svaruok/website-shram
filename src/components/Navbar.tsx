@@ -6,14 +6,14 @@ import { handleDownload, getAppLink } from '../utils/download';
 const mainNavLinks = [
   { label: 'Home', href: '/', isRoute: true },
   { label: 'About', href: '/about', isRoute: true },
+  { label: 'FAQ', href: '/faq', isRoute: true },
+  { label: 'Contact', href: '/contact', isRoute: true },
   { label: 'Blog', href: '/blog', isRoute: true },
 ];
 
 const sectionLinks = [
   { label: 'Features', href: '#features' },
   { label: 'How It Works', href: '#how-it-works' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Contact', href: '#contact' },
 ];
 
 export default function Navbar() {

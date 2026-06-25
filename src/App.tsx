@@ -11,6 +11,8 @@ import AccountDeletionPage from './pages/AccountDeletionPage';
 import PunePage from './pages/cities/PunePage';
 import MumbaiPage from './pages/cities/MumbaiPage';
 import NashikPage from './pages/cities/NashikPage';
+import FAQPage from './pages/FAQPage';
+import ContactPage from './pages/ContactPage';
 import ComingSoonModal from './components/ComingSoonModal';
 
 export default function App() {
@@ -26,6 +28,8 @@ export default function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/terms-and-conditions" element={<TermsConditionsPage />} />
           <Route path="/account-deletion" element={<AccountDeletionPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           {/* City SEO pages */}
           <Route path="/construction-workers-pune" element={<PunePage />} />
           <Route path="/mason-pune" element={<PunePage />} />
