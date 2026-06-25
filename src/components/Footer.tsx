@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Download } from 'lucide-react';
+import { Download, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
 import { handleDownload, getAppLink } from '../utils/download';
 
 const productLinks = [
@@ -45,6 +45,20 @@ export default function Footer() {
               <Download size={15} className="text-burgundy" />
               Google Play
             </a>
+            <div className="flex items-center gap-4 mt-6">
+              <a href="#" className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-burgundy hover:text-white transition-all">
+                <Facebook size={16} />
+              </a>
+              <a href="#" className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-burgundy hover:text-white transition-all">
+                <Instagram size={16} />
+              </a>
+              <a href="#" className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-burgundy hover:text-white transition-all">
+                <Twitter size={16} />
+              </a>
+              <a href="#" className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-burgundy hover:text-white transition-all">
+                <Linkedin size={16} />
+              </a>
+            </div>
           </div>
 
           {/* Product */}
