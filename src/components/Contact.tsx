@@ -8,6 +8,7 @@ import {
   Twitter,
   Instagram,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -66,21 +67,39 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
+          <motion.div 
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             Contact & Support
-          </div>
+          </motion.div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight">
+          <motion.h2 
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             We're here to{' '}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-burgundy to-gray-900">
               help
             </span>
-          </h2>
+          </motion.h2>
 
-          <p className="mt-6 text-gray-600 max-w-xl mx-auto text-lg font-medium">
+          <motion.p 
+            className="mt-6 text-gray-600 max-w-xl mx-auto text-lg font-medium"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             Have a question, feedback, or partnership enquiry? Reach out and
             our team will get back to you promptly.
-          </p>
+          </motion.p>
         </div>
 
         <div className="grid lg:grid-cols-5 gap-10">
@@ -101,10 +120,14 @@ export default function Contact() {
                 sub: "Registered business — details available on request",
                 href: null,
               },
-            ].map(({ icon: Icon, label, value, sub, href }) => (
-              <div
+            ].map(({ icon: Icon, label, value, sub, href }, index) => (
+              <motion.div
                 key={label}
                 className="group flex gap-5 p-6 bg-gray-50 rounded-3xl border border-gray-100 hover:bg-white hover:border-gray-200 hover:shadow-md transition-all duration-500"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <div className="w-12 h-12 bg-white border border-gray-100 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:border-burgundy/30 transition-all duration-300 shadow-sm text-burgundy">
                   <Icon size={20} className="currentColor group-hover:scale-110 transition-transform" />
@@ -130,11 +153,17 @@ export default function Contact() {
 
                   <p className="text-gray-500 text-xs mt-1.5 leading-relaxed font-medium">{sub}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
 
             {/* Social */}
-            <div className="p-6 bg-gray-50 rounded-3xl border border-gray-100">
+            <motion.div 
+              className="p-6 bg-gray-50 rounded-3xl border border-gray-100"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">
                 Follow Us
               </p>
@@ -169,11 +198,17 @@ export default function Contact() {
                   </a>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Contact Form */}
-          <div className="lg:col-span-3 bg-gray-50 rounded-[2rem] border border-gray-100 p-8 sm:p-10 shadow-xl relative overflow-hidden">
+          <motion.div 
+            className="lg:col-span-3 bg-gray-50 rounded-[2rem] border border-gray-100 p-8 sm:p-10 shadow-xl relative overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             
             <h3 className="font-extrabold text-gray-900 text-2xl mb-8 tracking-tight relative z-10">
               Send a message
@@ -251,7 +286,7 @@ export default function Contact() {
                 </button>
               </form>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import { Download, ArrowRight, Shield, Zap, MapPin, ArrowLeft, Users } from 'lucide-react';
 import { handleDownload, getAppLink } from '../utils/download';
 import AnimatedShramicoImage from './AnimatedShramicoImage';
+import { motion } from 'framer-motion';
 
 const badges = [
   { icon: Shield, text: 'OTP Verified' },
@@ -25,49 +26,78 @@ export default function Hero() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left content */}
           <div className="max-w-xl">
-            <div className="section-label mb-6">
+            <motion.div 
+              className="section-label mb-6"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               Quick Hire Platform
-            </div>
+            </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight tracking-tight mb-6">
+            <motion.h1 
+              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight tracking-tight mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               Find Trusted Workers.{' '}
               <span className="text-burgundy">Discover Better</span>{' '}
               Opportunities.{' '}
               <span className="text-burgundy">Hire Faster.</span>
-            </h1>
+            </motion.h1>
 
-            <p className="text-lg text-gray-500 leading-relaxed mb-10 max-w-lg">
+            <motion.p 
+              className="text-lg text-gray-500 leading-relaxed mb-10 max-w-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
               Shramico connects employers and skilled workers through a seamless mobile
               experience, helping businesses hire efficiently and workers discover
               opportunities nearby.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-wrap gap-4 mb-12">
-              <a
+            <motion.div 
+              className="flex flex-wrap gap-4 mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <motion.a
                 href={getAppLink() || '#'}
                 onClick={handleDownload}
                 target={getAppLink() ? "_blank" : undefined}
                 rel={getAppLink() ? "noopener noreferrer" : undefined}
                 className="btn-primary text-base px-8 py-4"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <Download size={18} />
                 Download on Google Play
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="#features"
                 onClick={(e) => {
                   e.preventDefault();
                   document.querySelector('#features')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn-outline text-base px-8 py-4"
+                className="btn-outline text-base px-8 py-4 cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 Learn More
                 <ArrowRight size={16} />
-              </a>
-            </div>
+              </motion.a>
+            </motion.div>
 
             {/* Trust badges */}
-            <div className="flex flex-wrap gap-4">
+            <motion.div 
+              className="flex flex-wrap gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
               {badges.map(({ icon: Icon, text }) => (
                 <div
                   key={text}
@@ -77,15 +107,28 @@ export default function Hero() {
                   <span className="font-medium">{text}</span>
                 </div>
               ))}
-            </div>
+            </motion.div>
           </div>
 
           {/* Right — device mockup */}
-          <div className="hidden lg:flex items-center justify-center relative">
+          <motion.div 
+            className="hidden lg:flex items-center justify-center relative"
+            initial={{ opacity: 0, scale: 0.9, x: 40 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
+          >
             <div className="relative">
               {/* Decorative circles */}
-              <div className="absolute -top-8 -left-8 w-64 h-64 rounded-full border border-burgundy/10" />
-              <div className="absolute -bottom-8 -right-8 w-48 h-48 rounded-full border border-burgundy/8" />
+              <motion.div 
+                className="absolute -top-8 -left-8 w-64 h-64 rounded-full border border-burgundy/10"
+                animate={{ rotate: 360, scale: [1, 1.05, 1] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              />
+              <motion.div 
+                className="absolute -bottom-8 -right-8 w-48 h-48 rounded-full border border-burgundy/8"
+                animate={{ rotate: -360, scale: [1, 1.1, 1] }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+              />
 
               {/* Main phone mockup */}
               <div className="relative z-10 w-64 h-[520px] bg-gray-900 rounded-[44px] shadow-2xl border-4 border-gray-800 overflow-hidden mx-auto flex flex-col">
@@ -186,7 +229,20 @@ export default function Hero() {
               </div>
 
               {/* Floating cards */}
-              <div className="absolute -left-16 top-1/3 bg-white rounded-xl shadow-xl border border-gray-100 px-4 py-3 flex items-center gap-3 w-44">
+              <motion.div 
+                className="absolute -left-16 top-1/3 bg-white rounded-xl shadow-xl border border-gray-100 px-4 py-3 flex items-center gap-3 w-44"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ 
+                  opacity: 1, 
+                  x: 0,
+                  y: [0, -10, 0]
+                }}
+                transition={{ 
+                  opacity: { duration: 0.6, delay: 1 },
+                  x: { duration: 0.6, delay: 1, type: 'spring' },
+                  y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.6 }
+                }}
+              >
                 <div className="w-8 h-8 bg-green-50 rounded-lg flex items-center justify-center flex-shrink-0">
                   <div className="w-3 h-3 rounded-full bg-green-500" />
                 </div>
@@ -194,15 +250,28 @@ export default function Hero() {
                   <p className="text-gray-800 text-xs font-semibold">Hired!</p>
                   <p className="text-gray-400 text-[10px]">Electrician · Just now</p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="absolute -right-12 bottom-1/3 bg-white rounded-xl shadow-xl border border-gray-100 px-4 py-3 w-40">
+              <motion.div 
+                className="absolute -right-12 bottom-1/3 bg-white rounded-xl shadow-xl border border-gray-100 px-4 py-3 w-40"
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ 
+                  opacity: 1, 
+                  x: 0,
+                  y: [0, 10, 0]
+                }}
+                transition={{ 
+                  opacity: { duration: 0.6, delay: 1.2 },
+                  x: { duration: 0.6, delay: 1.2, type: 'spring' },
+                  y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.8 }
+                }}
+              >
                 <p className="text-gray-500 text-[10px] mb-1">Active Listings</p>
                 <p className="text-gray-900 text-lg font-bold">1,240+</p>
                 <p className="text-green-500 text-[10px] font-medium">+12% this week</p>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 

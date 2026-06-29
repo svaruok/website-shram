@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const faqs = [
   {
@@ -49,28 +50,50 @@ export default function FAQ() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
+          <motion.div 
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             FAQ
-          </div>
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+          </motion.div>
+          <motion.h2 
+            className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             Frequently asked{' '}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-burgundy">
               questions
             </span>
-          </h2>
-          <p className="mt-6 text-gray-600 text-lg font-medium">
+          </motion.h2>
+          <motion.p 
+            className="mt-6 text-gray-600 text-lg font-medium"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             Can't find what you're looking for? Reach us at{' '}
             <a href="mailto:support@shramico.com" className="text-burgundy hover:text-[#5C0014] transition-colors font-bold">
               support@shramico.com
             </a>
-          </p>
+          </motion.p>
         </div>
 
         <div className="space-y-4">
           {faqs.map((faq, i) => (
-            <div
+            <motion.div
               key={i}
               className="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden hover:bg-white hover:border-gray-200 hover:shadow-sm transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
@@ -97,7 +120,7 @@ export default function FAQ() {
                   <p className="text-gray-600 text-sm leading-relaxed font-medium">{faq.a}</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

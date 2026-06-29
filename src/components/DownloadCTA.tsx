@@ -1,5 +1,6 @@
 import { handleDownload, getAppLink } from '../utils/download';
 import { Download } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function DownloadCTA() {
   return (
@@ -7,23 +8,47 @@ export default function DownloadCTA() {
       {/* Decorative */}
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-widest mb-8 shadow-sm backdrop-blur-md">
+        <motion.div 
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-widest mb-8 shadow-sm backdrop-blur-md"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           Available Now
-        </div>
+        </motion.div>
 
-        <h2 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight mb-8">
+        <motion.h2 
+          className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
           Ready to get{' '}
           <span className="text-white">
             started?
           </span>
-        </h2>
+        </motion.h2>
         
-        <p className="text-white/80 text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
+        <motion.p 
+          className="text-white/80 text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-medium"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           Join Shramico and experience a faster, smarter way to connect employers
           with skilled workers — right from your phone.
-        </p>
+        </motion.p>
 
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-14">
+        <motion.div 
+          className="flex flex-wrap items-center justify-center gap-4 mb-14"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
           <a
             href={getAppLink() || '#'}
             onClick={handleDownload}
@@ -42,18 +67,25 @@ export default function DownloadCTA() {
               </div>
             </div>
           </a>
-        </div>
+        </motion.div>
 
         <div className="flex flex-wrap justify-center gap-10">
           {[
             { label: 'Free to register', icon: '✨' },
             { label: 'OTP verified accounts', icon: '🔒' },
             { label: 'Instant job matching', icon: '⚡' }
-          ].map((point) => (
-            <div key={point.label} className="flex items-center gap-3 text-white/90 text-sm font-bold">
+          ].map((point, index) => (
+            <motion.div 
+              key={point.label} 
+              className="flex items-center gap-3 text-white/90 text-sm font-bold"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+            >
               <span className="text-xl">{point.icon}</span>
               {point.label}
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

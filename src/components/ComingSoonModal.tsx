@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { X, Smartphone, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ComingSoonModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,8 +17,6 @@ export default function ComingSoonModal() {
     return () => window.removeEventListener('open-coming-soon', handleOpen);
   }, []);
 
-  if (!isOpen) return null;
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
@@ -26,17 +25,29 @@ export default function ComingSoonModal() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Backdrop */}
-      <div 
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300"
-        onClick={() => setIsOpen(false)}
-      />
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => setIsOpen(false)}
+          />
 
-      {/* Modal Container */}
-      <div className="relative bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden border border-gray-100 transform transition-all duration-300 scale-100 z-10">
-        {/* Top Accent Bar */}
-        <div className="h-2 bg-gradient-to-r from-[#A63A50] via-[#800020] to-[#5C0014]" />
+          {/* Modal Container */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="relative bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden border border-gray-100 z-10"
+          >
+            {/* Top Accent Bar */}
+            <div className="h-2 bg-gradient-to-r from-[#A63A50] via-[#800020] to-[#5C0014]" />
         
         {/* Close Button */}
         <button 
@@ -95,14 +106,16 @@ export default function ComingSoonModal() {
             </form>
           )}
 
-          <button
-            onClick={() => setIsOpen(false)}
-            className="mt-6 text-xs font-semibold text-gray-400 hover:text-gray-600 transition-colors"
-          >
-            Go Back
-          </button>
-        </div>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="mt-6 text-xs font-semibold text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              Go Back
+            </button>
+          </div>
+        </motion.div>
       </div>
-    </div>
+      )}
+    </AnimatePresence>
   );
 }

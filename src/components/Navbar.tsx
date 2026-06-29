@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Download, ChevronDown } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { handleDownload, getAppLink } from '../utils/download';
 
 const mainNavLinks = [
@@ -51,7 +52,10 @@ export default function Navbar() {
   };
 
   return (
-    <nav
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled || !isHome ? 'bg-white shadow-md border-b border-gray-200' : 'bg-transparent'
       }`}
@@ -86,16 +90,24 @@ export default function Navbar() {
               >
                 Workers <ChevronDown size={14} className={`transition-transform ${workersOpen ? 'rotate-180' : ''}`} />
               </button>
-              {workersOpen && (
-                <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-2xl border border-gray-200 shadow-xl overflow-hidden z-50">
-                  <Link to="/hire-workers" onClick={() => setWorkersOpen(false)} className="flex items-center gap-2 px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-burgundy/5 hover:text-burgundy transition-all">
-                    Hire Workers
-                  </Link>
-                  <Link to="/find-jobs" onClick={() => setWorkersOpen(false)} className="flex items-center gap-2 px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-burgundy/5 hover:text-burgundy transition-all">
-                    Find Jobs
-                  </Link>
-                </div>
-              )}
+              <AnimatePresence>
+                {workersOpen && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 mt-2 w-52 bg-white rounded-2xl border border-gray-200 shadow-xl overflow-hidden z-50"
+                  >
+                    <Link to="/hire-workers" onClick={() => setWorkersOpen(false)} className="flex items-center gap-2 px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-burgundy/5 hover:text-burgundy transition-all">
+                      Hire Workers
+                    </Link>
+                    <Link to="/find-jobs" onClick={() => setWorkersOpen(false)} className="flex items-center gap-2 px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-burgundy/5 hover:text-burgundy transition-all">
+                      Find Jobs
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {isHome && sectionLinks.map((link) => (
@@ -138,12 +150,16 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      <div
-        className={`lg:hidden transition-all duration-500 overflow-hidden ${
-          menuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className="bg-white border-t border-gray-100 px-4 py-6 shadow-2xl">
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="lg:hidden overflow-hidden"
+          >
+            <div className="bg-white border-t border-gray-100 px-4 py-6 shadow-2xl">
           <div className="flex flex-col gap-1">
             {mainNavLinks.map((link) => (
               <Link
@@ -185,7 +201,9 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-      </div>
-    </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 }

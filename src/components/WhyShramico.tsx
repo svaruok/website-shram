@@ -1,4 +1,5 @@
 import { CheckCircle2, Award, Globe, Users } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const reasons = [
   {
@@ -39,23 +40,48 @@ export default function WhyShramico() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left */}
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
+            <motion.div 
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               Why Choose Shramico
-            </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight mb-6">
+            </motion.div>
+            <motion.h2 
+              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               A platform you can{' '}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-burgundy">
                 rely on
               </span>
-            </h2>
-            <p className="text-gray-600 text-lg mb-12 leading-relaxed font-medium">
+            </motion.h2>
+            <motion.p 
+              className="text-gray-600 text-lg mb-12 leading-relaxed font-medium"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               Shramico was built to solve a real problem: connecting skilled workers with
               employers in a fast, trustworthy, and accessible way. Here's why thousands
               choose us.
-            </p>
+            </motion.p>
             <div className="space-y-8">
-              {reasons.map(({ icon: Icon, title, desc }) => (
-                <div key={title} className="group flex gap-5">
+              {reasons.map(({ icon: Icon, title, desc }, index) => (
+                <motion.div 
+                  key={title} 
+                  className="group flex gap-5"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
                   <div className="w-14 h-14 bg-white border border-gray-100 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:border-burgundy/30 transition-all duration-300 shadow-sm mt-1">
                     <Icon size={24} className="text-burgundy group-hover:scale-110 transition-transform" />
                   </div>
@@ -63,26 +89,36 @@ export default function WhyShramico() {
                     <h3 className="font-bold text-gray-900 text-xl mb-2">{title}</h3>
                     <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
 
           {/* Right — pillars */}
           <div className="grid grid-cols-2 gap-5">
-            {pillars.map(({ value, desc }) => (
-              <div
+            {pillars.map(({ value, desc }, index) => (
+              <motion.div
                 key={value}
                 className="group bg-gray-50 rounded-[2rem] border border-gray-100 p-8 hover:bg-white hover:shadow-xl hover:border-gray-200 transition-all duration-500"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <div className="w-10 h-1 bg-gradient-to-r from-burgundy to-gray-900 rounded-full mb-6 group-hover:scale-x-150 transform origin-left transition-transform duration-500" />
                 <h3 className="font-extrabold text-gray-900 text-xl mb-3">{value}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed font-medium">{desc}</p>
-              </div>
+              </motion.div>
             ))}
 
             {/* Testimonial block - Keeping it dark for brand contrast! */}
-            <div className="col-span-2 bg-gradient-to-br from-burgundy to-[#5C0014] rounded-[2rem] p-8 text-white relative overflow-hidden shadow-xl">
+            <motion.div 
+              className="col-span-2 bg-gradient-to-br from-burgundy to-[#5C0014] rounded-[2rem] p-8 text-white relative overflow-hidden shadow-xl"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
               <div className="relative z-10">
                 <div className="flex gap-1 mb-6">
                   {[...Array(5)].map((_, i) => (
@@ -105,7 +141,7 @@ export default function WhyShramico() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

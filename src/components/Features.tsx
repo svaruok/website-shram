@@ -3,6 +3,7 @@ import {
   LayoutDashboard, ClipboardList, MessageSquare, Smartphone, Star,
   Calendar, CheckCircle2
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const bentoFeatures = [
   {
@@ -126,27 +127,50 @@ export default function Features() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 text-xs font-bold uppercase tracking-widest mb-6">
+          <motion.div 
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 text-xs font-bold uppercase tracking-widest mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             The Shramico Advantage
-          </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight">
+          </motion.div>
+          <motion.h2 
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             Everything you need to hire <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-burgundy">
               or get hired
             </span>
-          </h2>
-          <p className="mt-6 text-gray-500 max-w-2xl mx-auto text-lg font-medium">
+          </motion.h2>
+          <motion.p 
+            className="mt-6 text-gray-500 max-w-2xl mx-auto text-lg font-medium"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             Shramico bundles every essential tool into a single, elegant mobile app —
             designed for speed, trust, and simplicity.
-          </p>
+          </motion.p>
         </div>
 
         {/* SHRAMICO Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {bentoFeatures.map(({ letter, icon: Icon, title, desc, iconColor, bgHover, visual }) => (
-            <div 
+          {bentoFeatures.map(({ letter, icon: Icon, title, desc, iconColor, bgHover, visual }, index) => (
+            <motion.div 
               key={title} 
               className={`group relative p-8 rounded-3xl bg-gray-50 border border-gray-100 transition-all duration-500 overflow-hidden hover:shadow-xl hover:border-gray-200 hover:bg-white min-h-[260px] flex flex-col`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               {/* Massive Background Letter */}
               <div className="absolute -bottom-8 -right-4 text-[14rem] font-black text-gray-900/[0.06] group-hover:text-gray-900/[0.12] transition-colors duration-500 pointer-events-none leading-none select-none">
@@ -165,7 +189,7 @@ export default function Features() {
                   <p className="text-gray-600 text-sm leading-relaxed font-medium">{desc}</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -176,11 +200,19 @@ export default function Features() {
             { icon: Smartphone, text: 'Easy-to-Use Interface' },
             { icon: Star, text: 'Mobile-First Experience' },
             { icon: Navigation, text: 'Location Services' }
-          ].map(({ icon: Icon, text }) => (
-            <div key={text} className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gray-50 border border-gray-200 text-gray-600 text-sm font-bold hover:bg-gray-100 transition-all duration-300 hover:border-gray-300 cursor-default shadow-sm">
+          ].map(({ icon: Icon, text }, index) => (
+            <motion.div 
+              key={text} 
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gray-50 border border-gray-200 text-gray-600 text-sm font-bold hover:bg-gray-100 transition-all duration-300 hover:border-gray-300 cursor-default shadow-sm"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.05 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+            >
               <Icon size={16} className="text-burgundy" />
               {text}
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

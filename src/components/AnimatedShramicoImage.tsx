@@ -50,16 +50,16 @@ export default function AnimatedShramicoImage() {
   const scaleParallax = useTransform(scrollY, [0, 1000], [1, 1.05]);
 
   return (
-    <div className="absolute inset-0 w-full h-full flex items-start justify-center overflow-hidden pointer-events-none opacity-90 pt-8 lg:pt-12">
+    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
       <DustParticles />
       
       {/* Container for the static image */}
-      <div className="relative w-full h-full flex justify-center">
-        {/* Static image anchored to the top so it sits above the text */}
+      <div className="absolute inset-0 w-full h-full">
+        {/* Static image anchored as proper background */}
         <img
           src="/hero-shramico-2.jpg"
           alt="Shramico Workers"
-          className="w-full max-w-7xl h-[40vh] sm:h-[50vh] object-contain object-top mix-blend-multiply drop-shadow-2xl"
+          className="w-full h-full object-cover object-center opacity-30"
         />
         
         {/* Cinematic lighting reflection overlays */}

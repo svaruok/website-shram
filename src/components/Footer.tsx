@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Download, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { handleDownload, getAppLink } from '../utils/download';
 
 const productLinks = [
@@ -24,7 +25,13 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-10 pb-12 border-b border-gray-200">
           {/* Brand */}
-          <div className="col-span-2">
+          <motion.div 
+            className="col-span-2"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="flex items-center gap-2.5 mb-5">
               <div className="w-8 h-8 bg-burgundy rounded-lg flex items-center justify-center shadow-sm">
                 <span className="text-white font-bold text-sm"><img src="/Shramico_logo.jpeg" alt="shramico-logo" className='rounded-lg' /></span>
@@ -46,23 +53,28 @@ export default function Footer() {
               Google Play
             </a>
             <div className="flex items-center gap-4 mt-6">
-              <a href="#" className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-burgundy hover:text-white transition-all">
+              <a href="#" onClick={(e) => e.preventDefault()} className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-burgundy hover:text-white transition-all">
                 <Facebook size={16} />
               </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-burgundy hover:text-white transition-all">
+              <a href="#" onClick={(e) => e.preventDefault()} className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-burgundy hover:text-white transition-all">
                 <Instagram size={16} />
               </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-burgundy hover:text-white transition-all">
+              <a href="#" onClick={(e) => e.preventDefault()} className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-burgundy hover:text-white transition-all">
                 <Twitter size={16} />
               </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-burgundy hover:text-white transition-all">
+              <a href="#" onClick={(e) => e.preventDefault()} className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-burgundy hover:text-white transition-all">
                 <Linkedin size={16} />
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Product */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Product</p>
             <ul className="space-y-3">
               {productLinks.map(({ label, href }) => (
@@ -88,10 +100,15 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Company */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Company</p>
             <ul className="space-y-3">
               <li><Link to="/about" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">About Us</Link></li>
@@ -99,10 +116,15 @@ export default function Footer() {
               <li><Link to="/find-jobs" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">Find Jobs</Link></li>
               <li><Link to="/blog" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">Blog</Link></li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Locations (SEO Backlinks) */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
             <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Locations</p>
             <ul className="space-y-3">
               <li><Link to="/construction-workers-pune" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">Workers in Pune</Link></li>
@@ -111,10 +133,15 @@ export default function Footer() {
               <li><Link to="/electrician-pune" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">Electricians (Pune)</Link></li>
               <li><Link to="/plumber-pune" className="text-gray-600 font-medium text-sm hover:text-burgundy transition-colors">Plumbers (Pune)</Link></li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Support */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
             <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Support</p>
             <ul className="space-y-3">
               {supportLinks.map(({ label, to }) => (
@@ -136,10 +163,15 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Legal */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
             <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Legal</p>
             <ul className="space-y-3">
               <li>
@@ -158,15 +190,39 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex flex-col sm:flex-row items-center gap-3">
-            <p className="text-gray-500 font-medium text-sm">&copy; 2026 Shramico. All Rights Reserved.</p>
-            {/* DPIIT Badge */}
-            <img src="/dpiit-logo.jpg" alt="DPIIT Recognized Startup India" className="h-8 object-contain mix-blend-multiply" />
+        <motion.div 
+          className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <div className="flex items-center gap-3">
+              <p className="text-gray-500 font-medium text-sm">&copy; 2026 Shramico. All Rights Reserved.</p>
+              {/* DPIIT Badge */}
+              <img src="/dpiit-logo.jpg" alt="DPIIT Recognized Startup India" className="h-8 object-contain mix-blend-multiply" />
+            </div>
+            
+            {/* Social Media Mini Links */}
+            <div className="flex items-center gap-3 sm:ml-2 sm:border-l border-gray-200 sm:pl-4">
+              <a href="#" onClick={(e) => e.preventDefault()} className="text-gray-400 hover:text-burgundy transition-colors">
+                <Facebook size={16} />
+              </a>
+              <a href="#" onClick={(e) => e.preventDefault()} className="text-gray-400 hover:text-burgundy transition-colors">
+                <Instagram size={16} />
+              </a>
+              <a href="#" onClick={(e) => e.preventDefault()} className="text-gray-400 hover:text-burgundy transition-colors">
+                <Twitter size={16} />
+              </a>
+              <a href="#" onClick={(e) => e.preventDefault()} className="text-gray-400 hover:text-burgundy transition-colors">
+                <Linkedin size={16} />
+              </a>
+            </div>
           </div>
           <div className="flex items-center gap-5">
             <Link to="/privacy-policy" className="text-gray-500 font-medium text-xs hover:text-burgundy transition-colors">
@@ -181,7 +237,7 @@ export default function Footer() {
               Account Deletion
             </Link>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

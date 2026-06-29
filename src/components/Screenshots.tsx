@@ -4,6 +4,7 @@ import {
   User, Phone, Navigation, X, Play, Calendar, Home,
   ChevronRight, ChevronLeft, Compass, Info
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 function ScreenHome() {
   return (
@@ -1042,17 +1043,43 @@ export default function Screenshots() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
-          <div className="section-label mb-4">App Preview</div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
+          <motion.div 
+            className="section-label mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            App Preview
+          </motion.div>
+          <motion.h2 
+            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             A beautifully crafted{' '}
             <span className="text-burgundy">mobile experience</span>
-          </h2>
-          <p className="mt-4 text-gray-500 max-w-xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            className="mt-4 text-gray-500 max-w-xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             Interactive, intuitive, and designed to get work done instantly. Swipe or tap the arrows to explore the platform.
-          </p>
+          </motion.p>
         </div>
 
-        <div className="flex flex-col items-center justify-center w-full">
+        <motion.div 
+          className="flex flex-col items-center justify-center w-full"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
           {/* Controls & Phone Frame Container */}
           <div className="flex items-center justify-center gap-4 sm:gap-8 relative w-full max-w-[1000px]">
             {/* Left Button */}
@@ -1133,7 +1160,7 @@ export default function Screenshots() {
               />
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

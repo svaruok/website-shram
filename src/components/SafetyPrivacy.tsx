@@ -1,4 +1,5 @@
 import { Lock, Eye, UserCheck, Database } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const privacyPoints = [
   {
@@ -30,26 +31,48 @@ export default function SafetyPrivacy() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 text-gray-600 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
+          <motion.div 
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 text-gray-600 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             Safety & Privacy
-          </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight">
+          </motion.div>
+          <motion.h2 
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             Your privacy <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-burgundy to-gray-900">
               matters to us
             </span>
-          </h2>
-          <p className="mt-6 text-gray-600 text-lg max-w-2xl mx-auto font-medium">
+          </motion.h2>
+          <motion.p 
+            className="mt-6 text-gray-600 text-lg max-w-2xl mx-auto font-medium"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             Shramico is committed to responsible data practices, transparent policies, and
             giving users absolute control over their information.
-          </p>
+          </motion.p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {privacyPoints.map(({ icon: Icon, title, desc }) => (
-            <div
+          {privacyPoints.map(({ icon: Icon, title, desc }, index) => (
+            <motion.div
               key={title}
               className="group relative bg-white rounded-[2rem] border border-gray-200 p-8 hover:border-gray-300 transition-all duration-500 overflow-hidden shadow-sm hover:shadow-md"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-br from-gray-50 to-transparent pointer-events-none" />
               
@@ -60,12 +83,18 @@ export default function SafetyPrivacy() {
                 <h3 className="font-bold text-gray-900 text-xl mb-3 tracking-tight">{title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Note */}
-        <div className="mt-12 bg-white border border-gray-200 shadow-sm rounded-3xl p-8 flex flex-col sm:flex-row items-start sm:items-center gap-6">
+        <motion.div 
+          className="mt-12 bg-white border border-gray-200 shadow-sm rounded-3xl p-8 flex flex-col sm:flex-row items-start sm:items-center gap-6"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           <div className="w-12 h-12 bg-burgundy/5 border border-burgundy/10 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm">
             <Lock size={20} className="text-burgundy" />
           </div>
@@ -75,7 +104,7 @@ export default function SafetyPrivacy() {
             permission is entirely optional and can be managed at any time in your device settings.
             We are transparent about every permission we request.
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
