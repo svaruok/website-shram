@@ -50,19 +50,19 @@ export default function AnimatedShramicoImage() {
   const scaleParallax = useTransform(scrollY, [0, 1000], [1, 1.05]);
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none opacity-90">
+    <div className="absolute inset-y-0 left-0 w-full lg:w-3/5 flex items-center justify-center overflow-hidden pointer-events-none opacity-90">
       <DustParticles />
       
       {/* Container for the image with scroll parallax */}
       <motion.div 
         style={{ y: yParallax, scale: scaleParallax }}
-        className="relative w-full h-[110%] flex items-center justify-center -top-[5%]"
+        className="relative w-full h-[110%] flex items-center justify-center"
       >
         {/* Subtle slow dolly pan and float animation */}
         <motion.img
           src="/hero-shramico-2.jpg"
           alt="Shramico Workers"
-          className="w-full max-w-7xl h-full object-contain mix-blend-multiply drop-shadow-2xl"
+          className="w-full h-full object-contain object-left lg:object-center mix-blend-multiply drop-shadow-2xl"
           animate={{
             y: [-15, 15, -15],
             x: [-10, 10, -10],
