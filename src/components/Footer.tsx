@@ -52,20 +52,6 @@ export default function Footer() {
               <Download size={15} className="text-burgundy" />
               Google Play
             </a>
-            <div className="flex items-center gap-4 mt-6">
-              <a href="#" onClick={(e) => e.preventDefault()} className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-burgundy hover:text-white transition-all">
-                <Facebook size={16} />
-              </a>
-              <a href="#" onClick={(e) => e.preventDefault()} className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-burgundy hover:text-white transition-all">
-                <Instagram size={16} />
-              </a>
-              <a href="#" onClick={(e) => e.preventDefault()} className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-burgundy hover:text-white transition-all">
-                <Twitter size={16} />
-              </a>
-              <a href="#" onClick={(e) => e.preventDefault()} className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-burgundy hover:text-white transition-all">
-                <Linkedin size={16} />
-              </a>
-            </div>
           </motion.div>
 
           {/* Product */}
@@ -208,21 +194,6 @@ export default function Footer() {
               <img src="/dpiit-logo.jpg" alt="DPIIT Recognized Startup India" className="h-8 object-contain mix-blend-multiply" />
             </div>
             
-            {/* Social Media Mini Links */}
-            <div className="flex items-center gap-3 sm:ml-2 sm:border-l border-gray-200 sm:pl-4">
-              <a href="#" onClick={(e) => e.preventDefault()} className="text-gray-400 hover:text-burgundy transition-colors">
-                <Facebook size={16} />
-              </a>
-              <a href="#" onClick={(e) => e.preventDefault()} className="text-gray-400 hover:text-burgundy transition-colors">
-                <Instagram size={16} />
-              </a>
-              <a href="#" onClick={(e) => e.preventDefault()} className="text-gray-400 hover:text-burgundy transition-colors">
-                <Twitter size={16} />
-              </a>
-              <a href="#" onClick={(e) => e.preventDefault()} className="text-gray-400 hover:text-burgundy transition-colors">
-                <Linkedin size={16} />
-              </a>
-            </div>
           </div>
           <div className="flex items-center gap-5">
             <Link to="/privacy-policy" className="text-gray-500 font-medium text-xs hover:text-burgundy transition-colors">
