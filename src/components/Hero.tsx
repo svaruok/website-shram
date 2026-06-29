@@ -22,7 +22,7 @@ export default function Hero() {
         <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-burgundy/3 blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 z-10 pt-48 lg:pt-64">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28 pt-10 lg:pt-16 z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left content */}
           <div className="max-w-xl">
@@ -131,100 +131,34 @@ export default function Hero() {
               />
 
               {/* Main phone mockup */}
-              <div className="relative z-10 w-64 h-[520px] bg-gray-900 rounded-[44px] shadow-2xl border-4 border-gray-800 overflow-hidden mx-auto flex flex-col">
-                {/* Status bar */}
-                <div className="h-8 bg-gray-900 flex items-center justify-between px-6 flex-shrink-0">
-                  <span className="text-white text-[10px] font-medium">8:23</span>
-                  <div className="w-24 h-5 bg-gray-800 rounded-full" />
-                  <div className="flex gap-1">
-                    <div className="w-3 h-2 bg-white/80 rounded-sm" />
-                    <div className="w-1 h-2 bg-white/60 rounded-sm" />
-                  </div>
+              <div className="relative z-10 w-[280px] h-[580px] bg-white rounded-[44px] shadow-2xl border-[10px] border-gray-900 overflow-hidden mx-auto flex flex-col ring-4 ring-gray-100">
+                
+                {/* Dynamic Island Notch */}
+                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-6 bg-gray-900 rounded-full z-30 flex items-center justify-end px-2">
+                  <div className="w-2.5 h-2.5 rounded-full bg-gray-950 shadow-[inset_0_0_1px_rgba(255,255,255,0.3)] mr-1"></div>
                 </div>
-                {/* App screen */}
-                <div className="bg-[#FAF9F6] h-[488px] flex flex-col font-sans relative overflow-hidden select-none">
-                  {/* Header */}
-                  <div className="px-4 pt-3 pb-2 flex items-center border-b border-gray-100 bg-white">
-                    <div className="bg-pink-50/70 p-1.5 rounded-full w-7 h-7 flex items-center justify-center text-burgundy cursor-pointer hover:bg-pink-100/50 transition-colors">
-                      <ArrowLeft size={14} className="text-burgundy stroke-[3px]" />
-                    </div>
-                    <span className="text-sm font-bold text-gray-900 tracking-tight ml-2">Shramico</span>
-                  </div>
 
-                  {/* Subtitle */}
-                  <p className="text-[9px] text-gray-500 font-semibold px-4 pt-2 leading-relaxed">
-                    Select worker(s) to continue.
+                {/* Home Indicator */}
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-gray-900/80 rounded-full z-30"></div>
+
+                <img 
+                  src="/contractor_home.jpg" 
+                  alt="Shramico Contractor App" 
+                  className="absolute inset-0 w-full h-full object-cover object-top z-10"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).style.display = 'none';
+                  }}
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-gray-50 z-0">
+                  <div className="w-12 h-12 bg-red-100 text-red-500 rounded-full flex items-center justify-center mb-3">
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-900 font-bold text-sm mb-1">Screenshot Missing</p>
+                  <p className="text-gray-500 text-xs leading-relaxed">
+                    Please save your image in the <strong>public</strong> folder and name it exactly <strong>contractor_home.jpg</strong>
                   </p>
-
-                  {/* Selected worker badge */}
-                  <div className="border border-pink-100 bg-white rounded-2xl p-2.5 mx-4 mt-2 flex items-center gap-2.5 shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
-                    <div className="bg-red-50 text-burgundy p-1.5 rounded-lg flex items-center justify-center">
-                      <Users size={12} className="text-burgundy" />
-                    </div>
-                    <span className="text-[9.5px] font-bold text-gray-900">1 worker selected</span>
-                  </div>
-
-                  {/* Category Grid (scrollable) */}
-                  <div className="flex-1 overflow-y-auto px-4 pt-3 pb-4 space-y-3 scrollbar-hide">
-                    <div className="grid grid-cols-2 gap-3">
-                      
-                      {/* Mason - Selected */}
-                      <div className="border-2 border-burgundy rounded-[24px] p-2 bg-[#FDF2F4]/30 flex flex-col items-center justify-between text-center shadow-sm">
-                        <img src="/Categories/Mason.png" alt="Mason" className="w-16 h-16 object-contain rounded-t-xl mt-1" />
-                        <h5 className="text-[9.5px] font-extrabold text-gray-900 mt-1">Mason</h5>
-                        <div className="bg-burgundy text-white rounded-full py-1 px-2.5 flex items-center justify-between w-full text-[8.5px] font-bold mt-2 shadow-sm">
-                          <span>-</span>
-                          <span>1</span>
-                          <span>+</span>
-                        </div>
-                      </div>
-
-                      {/* Construction Helper */}
-                      <div className="border border-gray-150 rounded-[24px] p-2 bg-white flex flex-col items-center justify-between text-center shadow-sm hover:border-burgundy/30 transition-colors">
-                        <img src="/Categories/Construction_helper.png" alt="Construction Helper" className="w-16 h-16 object-contain rounded-t-xl mt-1" />
-                        <h5 className="text-[8.5px] font-bold text-gray-855 mt-1 leading-tight">Construction Helper</h5>
-                        <div className="bg-pink-50/40 text-burgundy border border-pink-100 rounded-full py-1 px-2.5 flex items-center justify-between w-full text-[8.5px] font-bold mt-2">
-                          <span className="text-gray-300">-</span>
-                          <span>Add</span>
-                          <span className="text-burgundy">+</span>
-                        </div>
-                      </div>
-
-                      {/* General */}
-                      <div className="border border-gray-150 rounded-[24px] p-2 bg-white flex flex-col items-center justify-between text-center shadow-sm hover:border-burgundy/30 transition-colors">
-                        <img src="/Categories/General.png" alt="General" className="w-16 h-16 object-contain rounded-t-xl mt-1" />
-                        <h5 className="text-[8.5px] font-bold text-gray-855 mt-1">General</h5>
-                        <div className="bg-pink-50/40 text-burgundy border border-pink-100 rounded-full py-1 px-2.5 flex items-center justify-between w-full text-[8.5px] font-bold mt-2">
-                          <span className="text-gray-300">-</span>
-                          <span>Add</span>
-                          <span className="text-burgundy">+</span>
-                        </div>
-                      </div>
-
-                      {/* Packers & Movers */}
-                      <div className="border border-gray-150 rounded-[24px] p-2 bg-white flex flex-col items-center justify-between text-center shadow-sm hover:border-burgundy/30 transition-colors">
-                        <img src="/Categories/Packers_and_Movers.png" alt="Packers and Movers" className="w-16 h-16 object-contain rounded-t-xl mt-1" />
-                        <h5 className="text-[8.5px] font-bold text-gray-855 mt-1 leading-tight">Packers and Movers</h5>
-                        <div className="bg-pink-50/40 text-burgundy border border-pink-100 rounded-full py-1 px-2.5 flex items-center justify-between w-full text-[8.5px] font-bold mt-2">
-                          <span className="text-gray-300">-</span>
-                          <span>Add</span>
-                          <span className="text-burgundy">+</span>
-                        </div>
-                      </div>
-
-                      {/* Helper */}
-                      <div className="border border-gray-150 rounded-[24px] p-2 bg-white flex flex-col items-center justify-between text-center shadow-sm hover:border-burgundy/30 transition-colors">
-                        <img src="/Categories/Helper.png" alt="Helper" className="w-16 h-16 object-contain rounded-t-xl mt-1" />
-                        <h5 className="text-[8.5px] font-bold text-gray-855 mt-1">Helper</h5>
-                        <div className="bg-pink-50/40 text-burgundy border border-pink-100 rounded-full py-1 px-2.5 flex items-center justify-between w-full text-[8.5px] font-bold mt-2">
-                          <span className="text-gray-300">-</span>
-                          <span>Add</span>
-                          <span className="text-burgundy">+</span>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
                 </div>
               </div>
 

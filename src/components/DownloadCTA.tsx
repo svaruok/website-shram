@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function DownloadCTA() {
   return (
-    <section className="py-32 bg-burgundy relative overflow-hidden">
+    <section className="py-16 bg-burgundy relative overflow-hidden">
       {/* Decorative */}
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">

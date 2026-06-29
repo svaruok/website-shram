@@ -45,7 +45,7 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-32 bg-white relative overflow-hidden border-t border-gray-100">
+    <section id="faq" className="py-16 bg-white relative overflow-hidden border-t border-gray-100">
       {/* Background glow effects */}
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

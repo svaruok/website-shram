@@ -6,6 +6,7 @@ import HowItWorks from '../components/HowItWorks';
 import Screenshots from '../components/Screenshots';
 import WhyShramico from '../components/WhyShramico';
 import SafetyPrivacy from '../components/SafetyPrivacy';
+import Founders from '../components/Founders';
 import FAQ from '../components/FAQ';
 import DownloadCTA from '../components/DownloadCTA';
 import Contact from '../components/Contact';
@@ -25,6 +26,7 @@ export default function Home() {
         <HowItWorks />
         <WhyShramico />
         <SafetyPrivacy />
+        <Founders />
         <FAQ />
         <DownloadCTA />
         <Contact />

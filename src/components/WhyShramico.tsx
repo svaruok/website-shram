@@ -33,7 +33,7 @@ const pillars = [
 
 export default function WhyShramico() {
   return (
-    <section id="why-shramico" className="py-32 bg-white relative overflow-hidden border-t border-gray-100">
+    <section id="why-shramico" className="py-16 bg-white relative overflow-hidden border-t border-gray-100">
       {/* Background glow effects */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

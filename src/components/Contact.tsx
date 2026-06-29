@@ -61,7 +61,7 @@ export default function Contact() {
     "w-full px-5 py-4 rounded-xl border border-gray-200 text-sm text-gray-900 placeholder-gray-400 bg-white focus:outline-none focus:ring-2 focus:ring-burgundy/20 focus:border-burgundy/30 transition-all duration-300 shadow-sm";
 
   return (
-    <section id="contact" className="py-32 bg-white relative overflow-hidden border-t border-gray-100">
+    <section id="contact" className="py-16 bg-white relative overflow-hidden border-t border-gray-100">
       {/* Background glow effects */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

@@ -47,7 +47,7 @@ function StepCard({ n, title, desc, last, index }: { n: string; title: string; d
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-32 bg-gray-50 relative overflow-hidden border-t border-gray-100">
+    <section id="how-it-works" className="py-16 bg-gray-50 relative overflow-hidden border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
           <motion.div 

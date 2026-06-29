@@ -12,7 +12,7 @@ const stats = [
 
 export default function TrustStats() {
   return (
-    <section className="py-24 bg-white relative overflow-hidden border-t border-gray-100 z-20">
+    <section className="py-12 bg-white relative overflow-hidden border-t border-gray-100 z-20">
       {/* Background glow effects */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
