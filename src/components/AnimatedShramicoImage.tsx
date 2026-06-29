@@ -56,13 +56,13 @@ export default function AnimatedShramicoImage() {
       {/* Container for the image with scroll parallax */}
       <motion.div 
         style={{ y: yParallax, scale: scaleParallax }}
-        className="relative w-[120%] h-[120%] flex items-center justify-center -left-[10%] top-[10%]"
+        className="relative w-full h-[110%] flex items-center justify-center -top-[5%]"
       >
         {/* Subtle slow dolly pan and float animation */}
         <motion.img
           src="/hero-shramico-2.jpg"
           alt="Shramico Workers"
-          className="w-full h-full object-contain mix-blend-multiply drop-shadow-2xl"
+          className="w-full max-w-7xl h-full object-contain mix-blend-multiply drop-shadow-2xl"
           animate={{
             y: [-15, 15, -15],
             x: [-10, 10, -10],
