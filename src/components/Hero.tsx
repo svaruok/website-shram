@@ -112,7 +112,7 @@ export default function Hero() {
 
           {/* Right — device mockup */}
           <motion.div 
-            className="hidden lg:flex items-center justify-center relative"
+            className="flex items-center justify-center relative"
             initial={{ opacity: 0, scale: 0.9, x: 40 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
@@ -131,7 +131,7 @@ export default function Hero() {
               />
 
               {/* Main phone mockup */}
-              <div className="relative z-10 w-[280px] h-[580px] bg-white rounded-[44px] shadow-2xl border-[10px] border-gray-900 overflow-hidden mx-auto flex flex-col ring-4 ring-gray-100">
+              <div className="relative z-10 w-[280px] h-[480px] bg-white rounded-[44px] shadow-2xl border-[10px] border-gray-900 overflow-hidden mx-auto flex flex-col ring-4 ring-gray-100">
                 
                 {/* Dynamic Island Notch */}
                 <div className="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-6 bg-gray-900 rounded-full z-30 flex items-center justify-end px-2">
@@ -141,14 +141,19 @@ export default function Hero() {
                 {/* Home Indicator */}
                 <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-gray-900/80 rounded-full z-30"></div>
 
-                <img 
-                  src="/contractor_home.jpg" 
-                  alt="Shramico Contractor App" 
-                  className="absolute inset-0 w-full h-full object-cover object-top z-10"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = 'none';
-                  }}
-                />
+                <div 
+                  className="absolute inset-0 w-full h-full overflow-y-auto no-scrollbar overscroll-contain z-10 pt-10 pb-8 rounded-[36px]"
+                  style={{ WebkitOverflowScrolling: 'touch', scrollBehavior: 'smooth' }}
+                >
+                  <img 
+                    src="/contractor_home.jpg" 
+                    alt="Shramico Contractor App" 
+                    className="w-full h-auto block"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                    }}
+                  />
+                </div>
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-gray-50 z-0">
                   <div className="w-12 h-12 bg-red-100 text-red-500 rounded-full flex items-center justify-center mb-3">
                     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

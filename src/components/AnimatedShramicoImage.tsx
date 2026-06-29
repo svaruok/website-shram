@@ -59,11 +59,11 @@ export default function AnimatedShramicoImage() {
         <img
           src="/hero-shramico-2.jpg"
           alt="Shramico Workers"
-          className="w-full h-full object-contain md:object-cover object-center opacity-90"
+          className="w-full h-full object-contain md:object-cover object-top md:object-center opacity-90 mt-8 md:mt-0"
         />
         
         {/* Gradient mask to slightly soften the image on the left side where text lives */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/65 to-transparent" />
         
         {/* Cinematic lighting reflection overlays */}
         <motion.div 
