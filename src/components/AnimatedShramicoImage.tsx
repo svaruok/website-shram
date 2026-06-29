@@ -50,29 +50,16 @@ export default function AnimatedShramicoImage() {
   const scaleParallax = useTransform(scrollY, [0, 1000], [1, 1.05]);
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center overflow-hidden pointer-events-none opacity-90">
+    <div className="absolute inset-0 w-full h-full flex items-start justify-center overflow-hidden pointer-events-none opacity-90 pt-8 lg:pt-12">
       <DustParticles />
       
-      {/* Container for the image with scroll parallax */}
-      <motion.div 
-        style={{ y: yParallax, scale: scaleParallax }}
-        className="relative w-full h-[110%] flex items-center justify-center"
-      >
-        {/* Subtle slow dolly pan and float animation */}
-        <motion.img
+      {/* Container for the static image */}
+      <div className="relative w-full h-full flex justify-center">
+        {/* Static image anchored to the top so it sits above the text */}
+        <img
           src="/hero-shramico-2.jpg"
           alt="Shramico Workers"
-          className="w-full h-full object-contain object-left mix-blend-multiply drop-shadow-2xl"
-          animate={{
-            y: [-15, 15, -15],
-            x: [-10, 10, -10],
-            rotate: [-0.5, 0.5, -0.5],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          className="w-full max-w-7xl h-[40vh] sm:h-[50vh] object-contain object-top mix-blend-multiply drop-shadow-2xl"
         />
         
         {/* Cinematic lighting reflection overlays */}
@@ -88,7 +75,7 @@ export default function AnimatedShramicoImage() {
             ease: "linear"
           }}
         />
-      </motion.div>
+      </div>
     </div>
   );
 }

@@ -15,20 +15,16 @@ export default function Hero() {
       className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-white"
     >
       {/* Subtle background pattern & Animated Image */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <AnimatedShramicoImage />
         <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-burgundy/4 blur-3xl" />
         <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-burgundy/3 blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 z-10 pt-48 lg:pt-64">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left content */}
-          <div className="max-w-xl flex flex-col pt-8">
-            {/* The beautiful animated SHRAMICO image placed naturally above the text */}
-            <div className="relative w-full h-40 sm:h-56 mb-8 lg:-ml-6 xl:-ml-12">
-              <AnimatedShramicoImage />
-            </div>
-
+          <div className="max-w-xl">
             <div className="section-label mb-6">
               Quick Hire Platform
             </div>
