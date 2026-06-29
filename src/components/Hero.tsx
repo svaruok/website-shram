@@ -1,5 +1,6 @@
 import { Download, ArrowRight, Shield, Zap, MapPin, ArrowLeft, Users } from 'lucide-react';
 import { handleDownload, getAppLink } from '../utils/download';
+import AnimatedShramicoText from './AnimatedShramicoText';
 
 const badges = [
   { icon: Shield, text: 'OTP Verified' },
@@ -13,9 +14,10 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-white"
     >
-      {/* Subtle background pattern */}
+      {/* Subtle background pattern & 3D Animated Text */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-[#FAF9F7] via-white to-transparent" />
+        <AnimatedShramicoText />
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-[#FAF9F7] via-white to-transparent opacity-80" />
         <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-burgundy/4 blur-3xl" />
         <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-burgundy/3 blur-3xl" />
       </div>

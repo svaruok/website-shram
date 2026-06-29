@@ -10,11 +10,13 @@ import FAQ from '../components/FAQ';
 import DownloadCTA from '../components/DownloadCTA';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import WorkerGuide from '../components/WorkerGuide';
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen relative">
       <Navbar />
+      <WorkerGuide />
       <main className="flex-grow">
         <Hero />
         <TrustStats />
