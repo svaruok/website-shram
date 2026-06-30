@@ -128,8 +128,8 @@ export default function WhyShramico() {
                   ))}
                 </div>
                 <p className="text-white text-lg leading-relaxed mb-6 font-medium">
-                  "Shramico made it so easy to find a qualified electrician near my shop within
-                  an hour. The app is clean, fast, and trustworthy."
+                  "Shramico made it so easy to find a qualified worker near my shop within
+                  minutes. The app is incredibly simple to use, and I love that all workers are verified."
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-white text-burgundy flex items-center justify-center font-extrabold text-sm border border-white/30 shadow-sm">
