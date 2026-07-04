@@ -145,14 +145,20 @@ export default function Hero() {
                   className="absolute inset-0 w-full h-full overflow-y-auto no-scrollbar overscroll-contain z-10 pt-10 pb-8 rounded-[36px]"
                   style={{ WebkitOverflowScrolling: 'touch', scrollBehavior: 'smooth' }}
                 >
-                  <img 
-                    src="/contractor_home.jpg" 
-                    alt="Shramico Contractor App" 
-                    className="w-full h-auto block"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = 'none';
-                    }}
-                  />
+                  <div className="relative w-full h-auto">
+                    <img 
+                      src="/contractor_home.jpg" 
+                      alt="Shramico Contractor App" 
+                      className="w-full h-auto block"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = 'none';
+                      }}
+                    />
+                    {/* Hack to cover "Test" and replace with "Rakesh" */}
+                    <div className="absolute top-[88px] left-[155px] bg-white px-1 flex items-center justify-start z-20">
+                      <span className="text-[#641E24] font-bold text-[15px]" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>Rakesh</span>
+                    </div>
+                  </div>
                 </div>
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-gray-50 z-0">
                   <div className="w-12 h-12 bg-red-100 text-red-500 rounded-full flex items-center justify-center mb-3">

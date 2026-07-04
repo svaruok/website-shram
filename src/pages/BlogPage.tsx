@@ -12,6 +12,7 @@ const posts = [
     desc: 'Hiring an electrician can be tricky. Here\'s what to look for — certifications, reviews, and response time — to ensure you get safe, quality work done.',
     date: 'June 2026',
     readTime: '4 min read',
+    imgUrl: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&auto=format&fit=crop',
   },
   {
     tag: 'Worker Stories',
@@ -19,6 +20,7 @@ const posts = [
     desc: 'Ramesh, a mason from Nashik, joined Shramico 3 months ago. Today he earns 40% more and has a queue of bookings. Here\'s how.',
     date: 'June 2026',
     readTime: '5 min read',
+    imgUrl: 'https://images.unsplash.com/photo-1504307651254-35680f356f90?q=80&w=800&auto=format&fit=crop',
   },
   {
     tag: 'Industry Insights',
@@ -26,6 +28,7 @@ const posts = [
     desc: 'India\'s unorganized labour sector is going digital. We explore what this means for skilled workers and the contractors who hire them.',
     date: 'May 2026',
     readTime: '6 min read',
+    imgUrl: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=800&auto=format&fit=crop',
   },
   {
     tag: 'Platform Updates',
@@ -33,6 +36,7 @@ const posts = [
     desc: 'We\'re excited to announce our expansion to Mumbai. Workers and employers in Mumbai can now sign up and start using the Shramico platform.',
     date: 'May 2026',
     readTime: '3 min read',
+    imgUrl: 'https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?q=80&w=800&auto=format&fit=crop',
   },
   {
     tag: 'Tips for Workers',
@@ -40,6 +44,7 @@ const posts = [
     desc: 'A complete profile, fast response time, and great reviews are key. Here are proven strategies to maximize your bookings on the platform.',
     date: 'April 2026',
     readTime: '4 min read',
+    imgUrl: 'https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=800&auto=format&fit=crop',
   },
   {
     tag: 'Tips for Employers',
@@ -47,6 +52,7 @@ const posts = [
     desc: 'Shramico\'s verification process takes workers 10 minutes. For employers, it means peace of mind and accountability. Here\'s why it matters.',
     date: 'April 2026',
     readTime: '3 min read',
+    imgUrl: 'https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=800&auto=format&fit=crop',
   },
 ];
 
@@ -93,9 +99,15 @@ export default function BlogPage() {
                 key={post.title}
                 className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col"
               >
-                <div className="h-40 bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center border-b border-gray-100">
-                  <BookOpen size={36} className="text-gray-300" />
-                </div>
+                {post.imgUrl ? (
+                  <div className="h-48 overflow-hidden">
+                    <img src={post.imgUrl} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                ) : (
+                  <div className="h-40 bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center border-b border-gray-100">
+                    <BookOpen size={36} className="text-gray-300" />
+                  </div>
+                )}
                 <div className="p-6 flex flex-col flex-1">
                   <div className="flex items-center gap-3 mb-3">
                     <span className={`text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border ${tagColors[post.tag] ?? 'bg-gray-100 text-gray-600 border-gray-200'}`}>

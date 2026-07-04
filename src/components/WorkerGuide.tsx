@@ -27,17 +27,17 @@ export default function WorkerGuide() {
 
   return (
     <>
-      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 pointer-events-none flex items-end gap-2 sm:gap-3">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 pointer-events-none flex flex-col items-center sm:flex-row sm:items-end gap-2 sm:gap-3 origin-bottom scale-75 sm:scale-100">
         {/* Speech Bubble */}
       <motion.div 
-        initial={{ opacity: 0, scale: 0.8, x: 20 }}
-        animate={{ opacity: 1, scale: 1, x: 0 }}
+        initial={{ opacity: 0, scale: 0.8, y: 10 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.3 }}
         key={message}
-        className="bg-white px-4 py-3 rounded-2xl rounded-br-none shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 mb-8 pointer-events-auto max-w-[160px]"
+        className="bg-white px-3 py-2 sm:px-4 sm:py-3 rounded-2xl rounded-b-none sm:rounded-b-2xl sm:rounded-br-none shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 sm:mb-8 pointer-events-auto max-w-[130px] sm:max-w-[160px]"
       >
-        <p className="text-[13px] font-bold text-gray-800 leading-tight">{message}</p>
-        <p className="text-[10px] text-gray-500 mt-1 font-semibold">Click me for a break!</p>
+        <p className="text-[11px] sm:text-[13px] font-bold text-gray-800 leading-tight">{message}</p>
+        <p className="text-[9px] sm:text-[10px] text-gray-500 mt-1 font-semibold">Click me for a break!</p>
       </motion.div>
 
         {/* Worker Character (CSS Art) */}

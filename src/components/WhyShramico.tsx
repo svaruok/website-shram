@@ -33,7 +33,7 @@ const pillars = [
 
 export default function WhyShramico() {
   return (
-    <section id="why-shramico" className="py-16 bg-white relative overflow-hidden border-t border-gray-100">
+    <section id="why-shramico" className="py-12 bg-white relative overflow-hidden border-t border-gray-100">
       {/* Background glow effects */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -133,11 +133,11 @@ export default function WhyShramico() {
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-white text-burgundy flex items-center justify-center font-extrabold text-sm border border-white/30 shadow-sm">
-                    EM
+                    RK
                   </div>
                   <div>
-                    <p className="font-bold text-white text-sm">Employer</p>
-                    <p className="text-white/80 text-xs font-semibold">Mumbai, India</p>
+                    <p className="font-bold text-white text-sm">Rajesh K.</p>
+                    <p className="text-white/80 text-xs font-semibold">Site Manager, Mumbai</p>
                   </div>
                 </div>
               </div>
